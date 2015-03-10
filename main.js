@@ -4,7 +4,6 @@
 //
 
 // TODO: Test
-// TODO: ESLint
 // TODO: Set coveralls.
 // TODO: Set codeclimate style.
 // TODO: Add JSDoc annotation
@@ -28,6 +27,9 @@
     try{
       info = imageSize(buffer);
       elapsed = process.hrtime(time);
+
+      // TODO: file size
+      // TODO: original URL
 
       info.url = url;
       info.transferred = buffer.length;
@@ -95,6 +97,7 @@
   module.exports = {
     analyze: analyze,
     size: size,
-    type: type
+    type: type,
+    FastImageError: errors.FastImageError
   };
 })();
