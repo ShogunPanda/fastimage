@@ -1,0 +1,64 @@
+{
+  "name": "fastimage",
+  "version": "0.1.0",
+  "description": "FastImage finds the size or type of an image given its URL by fetching as little as needed.",
+  "main": "main.js",
+  "files": [
+    "main.js",
+    "lib/errors.js",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "mocha",
+    "coverage": "mocha --require blanket -R html-cov > coverage.html; true",
+    "posttest": "eslint main.js lib/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShogunPanda/fastimage"
+  },
+  "keywords": [
+    "fast",
+    "fastimage",
+    "image",
+    "size",
+    "dimensions",
+    "resolution",
+    "width",
+    "height",
+    "png",
+    "jpeg",
+    "bmp",
+    "gif",
+    "psd",
+    "tiff",
+    "webp",
+    "svg"
+  ],
+  "author": "Shogun <shogun@cowtech.it>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShogunPanda/fastimage/issues"
+  },
+  "homepage": "https://github.com/ShogunPanda/fastimage",
+  "devDependencies": {
+    "blanket": "^1.1.6",
+    "eslint": "^0.16.1",
+    "expect.js": "^0.3.1",
+    "mocha": "~2.1.0",
+    "sinon": "^1.13.0"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "main.js"
+      ],
+      "data-cover-never": "node_modules"
+    }
+  },
+  "dependencies": {
+    "image-size": "^0.3.5",
+    "request": "^2.53.0"
+  }
+}
