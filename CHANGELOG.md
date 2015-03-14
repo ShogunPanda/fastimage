@@ -1,4 +1,3 @@
-
 ### 2015-03-14 / 0.2.0 - The PI release!
 
 * Added support for analyzing local files.

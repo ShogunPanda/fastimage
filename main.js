@@ -12,7 +12,9 @@
   var analyzer = require("./lib/analyzer");
   var parseUrl = require("url").parse;
 
-  // TODO: Stream interface
+  // TODO: Work directly on buffers
+  // TODO: Stream interface in input
+  // TODO: Stream interface in output
   // TODO: Promise interface
 
   /**
