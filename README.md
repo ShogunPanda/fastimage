@@ -23,13 +23,15 @@ The supported image type are (thanks to the [image-size](https://github.com/netr
 
 ## Usage
 
+For more details usage examples, see the `examples` folder.
+
 ### Callback style
 
-To get the image informations, call `fastimage.analyze` passing the URL (can be also a local file path) and a callback.
+To get the image informations, call `fastimage.info` passing the URL (can be also a local file path or a Buffer) and a callback.
 
 ```javascript
 var fastimage = require("fastimage");
-fastimage.analyze("http://placehold.it/100x100", function(error, information){
+fastimage.info("http://placehold.it/100x100", function(error, information){
   if(error){
     // ...
   else{
@@ -38,26 +40,50 @@ fastimage.analyze("http://placehold.it/100x100", function(error, information){
 });
 ```
 
-For the details about the second parameter of the callback, see [fastimage.analyze](#user-content-fastimageanalyzeurl-callback), 
-[fastimage.size](#user-content-fastimagesizeurl-callback) and [fastimage.type](#user-content-fastimagetypeurl-callback).
+For the details about the second parameter of the callback, see [fastimage.info](#user-content-fastimageinfosubject-callback), 
+[fastimage.size](#user-content-fastimagesizesubject-callback) and [fastimage.type](#user-content-fastimagetypesubject-callback).
 
 ### Promise style
 
-# TODO
+All the fastime image methods `info`, `filteredInfo`, `size` and `type` return a Promise. Once resolved, the promises have the same payload of the callbacks.
+
+```javascript
+var fastimage = require("fastimage");
+
+fastimage.info("http://placehold.it/100x100")
+  .then(function(info){
+    // ...
+  })
+  .catch(function(error){
+    // ...
+  });
+```
 
 ### Stream style
 
-# TODO
+If you want to go *The Node.js Way*, you can use the streaming API.
+ 
+Calling `fastimage.stream` it will return a Duplex stream object. Called without arguments, it's ideal for piping. Otherwise, you can use only it's readable side.
+
+```javascript
+// Duplex
+request("http://placehold.it/100x100.png").pipe(fastimage.stream()).pipe(/*...*/);
+
+// Readable
+fastimage.stream("http://placehold.it/100x100.png").pipe(/*...*/);
+```
+
+Streams will emit the `size` and `type` if you only need those informations.
 
 ## Supported implementations.
 
-Chalkbars supports and has been tested on [NodeJS](http://nodejs.org) 0.10+ and [io.js](http://iojs.org) 1.0+.
+Fastimage supports and has been tested on [NodeJS](http://nodejs.org) 0.10+ and [io.js](http://iojs.org) 1.0+.
 
 ## API Documentation
 
-### fastimage.analyze(url, callback)
+### fastimage.info(subject, [callback])
   
-Analyzes a URL (local or remote) and return the image informations.
+Analyzes a URL (local or remote) or a Buffer and return the image informations.
 
 The signature of the callback is `function(error, info)`.
 
@@ -94,9 +120,23 @@ When the URL is a local file the object will be similar to this:
 }
 ```
 
-### fastimage.size(url, callback)
+When the source is a Buffer the object will be similar to this:
 
-Analyzes a URL (local or remote) and return the image size.
+```javascript
+{
+  "width": 150, // The width of the image in pixels.
+  "height": 150, // The height of the image in pixels.
+  "type": "png", // The type of the image. Can be `bmp`, `gif`, `jpeg`, `png`, `psd`, `tif`, `webp` or `svg`.
+  "analyzed": 4096 // The number of bytes analyzed.
+  "time": 14.00558 // The time required for the operation, in milliseconds.
+}
+```
+
+The function will return a Promise, which will resolve providing the information object.
+
+### fastimage.size(subject, [callback])
+
+Analyzes a URL (local or remote) or a Buffer and return the image size.
 
 The signature of the callback is `function(error, dimensions)`.
 
@@ -104,15 +144,66 @@ The first argument of the callback, when failed, will be a [FastImageError](#use
 
 The second argument of the callback, when successful, will be a object containing the fields `width` and `height` in pixels.
 
-### fastimage.type(url, callback)
+The function will return a Promise, which will resolve providing the information object.
 
-Analyzes a URL (local or remote) and return the image type.
+### fastimage.type(subject, [callback])
+
+Analyzes a URL (local or remote) or a Buffer and return the image type.
 
 The signature of the callback is `function(error, type)`.
 
 The first argument of the callback, when failed, will be a [FastImageError](#user-content-fastimageFastImageError) instance.
 
 The second argument of the callback, when successful, will be the type of the image.
+
+The function will return a Promise, which will resolve providing the image type.
+
+### fastimage.filteredInfo(subject, [filter, callback])
+
+Analyzes a URL (local or remote) or a Buffer and return the image informations passing through a filter function.
+
+The filter function should accept an object as input and return the object to be passed to the callback.
+
+For details on the input object of the filter, see [fastimage.info](#user-content-fastimageinfosubject-callback).
+     
+The signature of the callback is `function(error, info)`.
+
+The first argument of the callback, when failed, will be a [FastImageError](#user-content-fastimageFastImageError) instance.
+
+The second argument of the callback, when successful, will be a object containing the image informations.
+
+The function will return a Promise, which will resolve providing the filtered information object.
+
+### fastimage.stream(subject, [options])
+
+Creates a new fastimage stream analysis. This is a Duplex stream which works in object mode on the readable side.
+
+It will emit the following events:
+
+* **size**: The payload will be a object containing the fields `width` and `height` in pixels.
+* **type**: The payload will the type of the image.
+
+### fastimage.timeout([timeout])
+
+Gets or sets the maximum number of seconds to wait to connect to a host.
+
+If the value is present, it will also set the new value. If the value is `null`, it will restore the default value.
+
+The default value is `30000`.
+
+### fastimage.threshold([threshold])
+
+Gets or sets the maximum number of bytes to read to attempt an identification before giving up and state that the source is not an image.
+
+If the value is present, it will also set the new value. If the value is `null`, it will restore the default value.
+
+The default value is `4096`.
+
+### fastimage.FastImageStream
+
+A image analysis stream.
+
+Streams will emit the `size` and `type` if you only need those informations about the image.
 
 ### fastimage.FastImageError
 

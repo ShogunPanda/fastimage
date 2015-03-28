@@ -1,11 +1,12 @@
 {
   "name": "fastimage",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "FastImage finds the size or type of an image given its URL by fetching as little as needed.",
   "main": "main.js",
   "files": [
     "main.js",
-    "lib/errors.js",
+    "lib",
+    "examples",
     "README.md",
     "CHANGELOG.md"
   ],
@@ -53,12 +54,14 @@
     "jsdoc": "^3.3.0-beta2",
     "mocha": "~2.1.0",
     "mocha-lcov-reporter": "0.0.2",
-    "sinon": "^1.13.0"
+    "sepia": "^2.0.1",
+    "through": "^2.3.6"
   },
   "config": {
     "blanket": {
       "pattern": [
-        "main.js"
+        "main.js",
+        "lib"
       ],
       "data-cover-never": "node_modules"
     }

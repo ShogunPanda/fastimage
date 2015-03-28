@@ -1,3 +1,12 @@
+### 2015-03-28 / 1.0.0
+
+* Renamed `fastimage.analyze` as `fastimage.info`.
+* Added `fastimage.filteredInfo` to filter the result object.
+* Make `fastimage.info`, `fastimage.filteredInfo`, `fastimage.size` and `fastimage.type` return a Promise.
+* Added `fastimage.stream` and exported `FastImageStream` for streaming support.
+* Support for analyzing Buffers.
+* Added examples and test.
+
 ### 2015-03-14 / 0.2.0 - The PI release!
 
 * Added support for analyzing local files.
