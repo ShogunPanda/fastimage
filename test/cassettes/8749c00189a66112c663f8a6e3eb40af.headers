@@ -1,0 +1,26 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "date": "Sat, 28 Mar 2015 22:29:24 GMT",
+    "content-type": "image/gif",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "set-cookie": [
+      "__cfduid=dfd98a43aa84426374e509ec0f4d192501427581764; expires=Sun, 27-Mar-16 22:29:24 GMT; path=/; domain=.placehold.it; HttpOnly"
+    ],
+    "expires": "Mon, 27 Apr 2015 22:29:24 GMT",
+    "cache-control": "public, max-age=2592000",
+    "last-modified": "Fri, 19 Nov 2010 07:00:00 GMT",
+    "cf-cache-status": "MISS",
+    "server": "cloudflare-nginx",
+    "cf-ray": "1ce6c60ea6b9070d-SJC"
+  },
+  "url": "http://placehold.it:80/200x100",
+  "time": 135,
+  "request": {
+    "method": "GET",
+    "headers": {
+      "host": "placehold.it"
+    }
+  }
+}

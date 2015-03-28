@@ -1,0 +1,24 @@
+{
+  "statusCode": 404,
+  "headers": {
+    "date": "Sat, 28 Mar 2015 22:29:25 GMT",
+    "content-type": "text/html",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "set-cookie": [
+      "__cfduid=d616d7f56be649418e0bce1e43f051c591427581765; expires=Sun, 27-Mar-16 22:29:25 GMT; path=/; domain=.placehold.it; HttpOnly"
+    ],
+    "cache-control": "max-age=7200, must-revalidate",
+    "cf-cache-status": "HIT",
+    "server": "cloudflare-nginx",
+    "cf-ray": "1ce6c612d54f11a1-SJC"
+  },
+  "url": "http://placehold.it:80/foo",
+  "time": 53,
+  "request": {
+    "method": "GET",
+    "headers": {
+      "host": "placehold.it"
+    }
+  }
+}

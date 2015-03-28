@@ -1,0 +1,18 @@
+{
+  "error": {
+    "code": "ENOTFOUND",
+    "errno": "ENOTFOUND",
+    "syscall": "getaddrinfo",
+    "hostname": "placehold1.it",
+    "host": "placehold1.it",
+    "port": 80
+  },
+  "url": "http://placehold1.it:80/",
+  "time": 196,
+  "request": {
+    "method": "GET",
+    "headers": {
+      "host": "placehold1.it"
+    }
+  }
+}
