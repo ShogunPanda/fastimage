@@ -1,3 +1,7 @@
+### 2015-05-06 / 1.0.1
+
+* Ensured Node 0.10 compatibility.
+
 ### 2015-03-28 / 1.0.0
 
 * Renamed `fastimage.analyze` as `fastimage.info`.
