@@ -18,6 +18,8 @@
   };
 
   describe("using streams", function(){
+    this.timeout(5000);
+
     it("should allow readable only mode", function(done){
       fastimage.stream(__dirname + "/../examples/image.png").pipe(through(function(info){
         verify(done, function(){

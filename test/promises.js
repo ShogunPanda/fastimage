@@ -21,6 +21,8 @@
   };
 
   describe("using promises", function(){
+    this.timeout(5000);
+
     describe("info", function(){
       it("should resolve providing the info", function(done){
         fastimage.info(__dirname + "/../examples/image.png").then(function(info){

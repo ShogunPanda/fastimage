@@ -52,6 +52,8 @@
   });
 
   describe("using callbacks", function(){
+    this.timeout(5000);
+
     describe("info", function(){
       it("should return an error when an invalid data is asked", function(done){
         fastimage.info("", function(error, info){
