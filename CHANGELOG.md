@@ -1,3 +1,7 @@
+### 2015-05-25 / 1.0.2
+
+* Ensured promise is included as dependency.
+
 ### 2015-05-06 / 1.0.1
 
 * Ensured Node 0.10 compatibility.
