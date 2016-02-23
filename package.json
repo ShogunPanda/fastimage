@@ -55,6 +55,7 @@
     "mocha": "~2.1.0",
     "mocha-lcov-reporter": "0.0.2",
     "sepia": "^2.0.1",
+    "sinon": "^1.17.3",
     "through": "^2.3.6"
   },
   "config": {
