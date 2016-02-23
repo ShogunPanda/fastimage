@@ -131,13 +131,13 @@
         });
 
         it("should return a error when the URL is a text file", function(done){
-          fastimage.info("http://placehold.it/robots.txt", function(error, info){
+          fastimage.info("https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txt=300%C3%97300&w=300&h=300&fm=tif", function(error, info){
             verify(done, function(){
               expect(info).not.to.be.ok();
               expect(error).to.be.a(fastimage.FastImageError);
 
-              expect(error.code).to.equal("SERVER_ERROR");
-              expect(error.message).to.equal("Unexpected response from the remote host.");
+              expect(error.code).to.equal("UNSUPPORTED_TYPE");
+              expect(error.message).to.equal("Unsupported image file.");
             });
           });
         });
