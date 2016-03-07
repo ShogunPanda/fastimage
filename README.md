@@ -199,6 +199,14 @@ If the value is present, it will also set the new value. If the value is `null`,
 
 The default value is `4096`.
 
+### fastimage.userAgent([userAgent])
+
+Gets or sets the User Agent String to send on outgoing requests.
+
+If the value is present, it will also set the new value. If the value is `null`, it will restore the default value.
+
+The default value is `4096`.
+
 ### fastimage.FastImageStream
 
 A image analysis stream.

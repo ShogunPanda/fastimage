@@ -51,6 +51,17 @@
     });
   });
 
+  describe("user agent", function(){
+    it("should set and get the value", function(){
+      var defaultValue = "Fast Image - Node Image Lookup - https://www.npmjs.com/package/fastimage";
+      expect(fastimage.userAgent()).to.equal(defaultValue);
+      expect(fastimage.userAgent("new value")).to.equal("new value");
+      expect(fastimage.userAgent()).to.equal("new value");
+      expect(fastimage.userAgent(null)).to.equal(defaultValue);
+      expect(fastimage.userAgent()).to.equal(defaultValue);
+    });
+  });
+
   describe("using callbacks", function(){
     this.timeout(5000);
 

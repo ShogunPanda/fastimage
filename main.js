@@ -20,6 +20,8 @@
 
     threshold: core.threshold,
 
+    userAgent: core.userAgent,
+
     /**
      * Analyzes a source (a local path, a remote URL or a Buffer) and return the image informations.
      *
