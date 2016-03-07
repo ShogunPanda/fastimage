@@ -37,9 +37,6 @@
     "no-mixed-requires": 2,
     "no-process-exit": 0,
     "handle-callback-err": [2, "^(e|err|error)$"],
-
-    "generator-star": [2, "end"],
-
     "indent": [2, 2],
     "brace-style": [2, "1tbs", {"allowSingleLine": true}],
     "comma-style": 2,
