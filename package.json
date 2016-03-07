@@ -1,6 +1,6 @@
 {
   "name": "fastimage",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "description": "FastImage finds the size or type of an image given its URL by fetching as little as needed.",
   "main": "main.js",
   "files": [

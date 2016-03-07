@@ -1,3 +1,11 @@
+### 2016-03-07 / 1.1.1
+
+* Bumped version in package.json.
+
+### 2016-03-07 / 1.1.0
+
+* Added `fastimage.userAgent` to enable User Agent handling. Thanks to matcarey.
+
 ### 2015-05-25 / 1.0.2
 
 * Ensured promise is included as dependency.
