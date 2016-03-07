@@ -8,7 +8,6 @@
 
   var expect = require("expect.js");
   var path = require("path");
-  var sinon = require("sinon");
   var request = require("request");
 
   var fastimage = require("../main");
@@ -120,62 +119,6 @@
             expect(error.message).to.equal("Unsupported image file.");
           });
         });
-      });
-    });
-
-    describe("outgoing request", function(){
-      var waitForTestToCallRequest, defaultUserAgent;
-
-      beforeEach(function(){
-        defaultUserAgent = "Fast Image - Node Image Lookup - https://www.npmjs.com/package/fastimage";
-        waitForTestToCallRequest = new Promise(function (res) {
-          sinon.stub(request, "get", function (outgoingRequest) {
-            res(outgoingRequest);
-            var ret = {
-              on: function () {
-                return ret;
-              }
-            };
-            return ret;
-          });
-        });
-      });
-      afterEach(function(){
-        request.get.restore();
-      });
-
-      it("should contain a default user agent string", function (done) {
-        waitForTestToCallRequest.then(function (outgoingRequest) {
-          expect(outgoingRequest.headers["user-agent"]).to.be(defaultUserAgent);
-          done();
-        }).catch(done);
-
-        fastimage.info("http://example.com/");
-      });
-
-      it("should contain a default user agent string", function (done) {
-        var newUserAgentString = "Hello World!";
-
-        waitForTestToCallRequest.then(function (outgoingRequest) {
-          expect(outgoingRequest.headers["user-agent"]).to.be(newUserAgentString);
-          done();
-        }).catch(done);
-
-        fastimage.userAgent(newUserAgentString);
-        fastimage.info("http://example.com/");
-      });
-
-      it("should have a standard setter/getter for user agent string", function (done) {
-        waitForTestToCallRequest.then(function (outgoingRequest) {
-          expect(outgoingRequest.headers["user-agent"]).to.be(defaultUserAgent);
-          done();
-        }).catch(done);
-
-        fastimage.userAgent("this will never actually be used");
-        expect(fastimage.userAgent()).to.eql("this will never actually be used");
-        fastimage.userAgent(null);
-        expect(fastimage.userAgent()).to.eql(defaultUserAgent);
-        fastimage.info("http://example.com/");
       });
     });
   });

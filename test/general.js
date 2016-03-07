@@ -12,7 +12,8 @@
   var path = require("path");
   var net = require("net");
   var crypto = require("crypto");
-
+  var sinon = require("sinon");
+  var request = require("request");
   var fastimage = require("../main");
 
   sepia.fixtureDir(path.join(__dirname, "cassettes"));
@@ -53,12 +54,11 @@
 
   describe("user agent", function(){
     it("should set and get the value", function(){
-      var defaultValue = "Fast Image - Node Image Lookup - https://www.npmjs.com/package/fastimage";
-      expect(fastimage.userAgent()).to.equal(defaultValue);
+      expect(fastimage.userAgent()).to.equal(null);
       expect(fastimage.userAgent("new value")).to.equal("new value");
       expect(fastimage.userAgent()).to.equal("new value");
-      expect(fastimage.userAgent(null)).to.equal(defaultValue);
-      expect(fastimage.userAgent()).to.equal(defaultValue);
+      expect(fastimage.userAgent(null)).to.equal(null);
+      expect(fastimage.userAgent()).to.equal(null);
     });
   });
 
@@ -77,7 +77,6 @@
           });
         });
       });
-
 
       describe("URL", function(){
         it("should return the information of a image", function(done){
@@ -291,6 +290,37 @@
           });
         });
       });
+
+      describe("it should handle the User-Agent", function(){
+        var requestParams = {};
+
+        beforeEach(function(){
+          sinon.stub(request, "get", function(params){
+            requestParams = params;
+
+            return {
+              on: function (){}
+            };
+          });
+        });
+
+        afterEach(function(){
+          request.get.restore();
+        });
+
+        it("not sending any header if no agent has been set", function(done){
+          fastimage.info("http://placehold.it/100x100.png");
+          expect(requestParams.headers).not.to.be.ok();
+          done(null);
+        });
+
+        it("sending the header if the agent has been set", function(done){
+          fastimage.userAgent("AGENT");
+          fastimage.info("http://placehold.it/100x100.png");
+          expect(requestParams.headers["User-Agent"]).to.equal("AGENT");
+          done(null);
+        });
+      });
     });
 
     describe("filteredInfo", function(){
@@ -385,5 +415,62 @@
         });
       });
     });
+    /*
+    describe("outgoing request", function(){
+      var waitForTestToCallRequest, defaultUserAgent;
+
+      beforeEach(function(){
+        defaultUserAgent = "Fast Image - Node Image Lookup - https://www.npmjs.com/package/fastimage";
+        waitForTestToCallRequest = new Promise(function (res) {
+          sinon.stub(request, "get", function (outgoingRequest) {
+            res(outgoingRequest);
+            var ret = {
+              on: function () {
+                return ret;
+              }
+            };
+            return ret;
+          });
+        });
+      });
+      afterEach(function(){
+        request.get.restore();
+      });
+
+      it("should contain a default user agent string", function (done) {
+        waitForTestToCallRequest.then(function (outgoingRequest) {
+          expect(outgoingRequest.headers["user-agent"]).to.be(defaultUserAgent);
+          done();
+        }).catch(done);
+
+        fastimage.info("http://example.com/");
+      });
+
+      it("should contain a default user agent string", function (done) {
+        var newUserAgentString = "Hello World!";
+
+        waitForTestToCallRequest.then(function (outgoingRequest) {
+          expect(outgoingRequest.headers["user-agent"]).to.be(newUserAgentString);
+          done();
+        }).catch(done);
+
+        fastimage.userAgent(newUserAgentString);
+        fastimage.info("http://example.com/");
+      });
+
+      it("should have a standard setter/getter for user agent string", function (done) {
+        waitForTestToCallRequest.then(function (outgoingRequest) {
+          expect(outgoingRequest.headers["user-agent"]).to.be(defaultUserAgent);
+          done();
+        }).catch(done);
+
+        fastimage.userAgent("this will never actually be used");
+        expect(fastimage.userAgent()).to.eql("this will never actually be used");
+        fastimage.userAgent(null);
+        expect(fastimage.userAgent()).to.eql(defaultUserAgent);
+        fastimage.info("http://example.com/");
+      });
+    });
+    */
   });
 })();
