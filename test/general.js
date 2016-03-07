@@ -70,14 +70,14 @@
 
       describe("URL", function(){
         it("should return the information of a image", function(done){
-          fastimage.info("http://placehold.it/200x100", function(error, info){
+          fastimage.info("http://placehold.it/200x100.png", function(error, info){
             verify(done, function(){
               expect(error).not.to.be.ok();
               expect(info).to.only.have.keys(["width", "height", "type", "url", "transferred", "time", "realUrl", "size"]);
               expect(info.width).to.equal(200);
               expect(info.height).to.equal(100);
               expect(info.type).to.equal("png");
-              expect(info.url).to.equal("http://placehold.it/200x100");
+              expect(info.url).to.equal("http://placehold.it/200x100.png");
               expect(info.transferred).to.be.a("number");
               expect(info.time).to.be.a("number");
             });
@@ -119,19 +119,7 @@
         });
 
         it("should return a error when the URL is not a image", function(done){
-          fastimage.info("http://example.com/", function(error, info){
-            verify(done, function(){
-              expect(info).not.to.be.ok();
-              expect(error).to.be.a(fastimage.FastImageError);
-
-              expect(error.code).to.equal("UNSUPPORTED_TYPE");
-              expect(error.message).to.equal("Unsupported image file.");
-            });
-          });
-        });
-
-        it("should return a error when the URL is a text file", function(done){
-          fastimage.info("https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txt=300%C3%97300&w=300&h=300&fm=tif", function(error, info){
+          fastimage.info("http://www.google.com/robots.txt", function(error, info){
             verify(done, function(){
               expect(info).not.to.be.ok();
               expect(error).to.be.a(fastimage.FastImageError);
@@ -353,7 +341,7 @@
     describe("type", function(){
       describe("URL", function(){
         it("should return the type of a image", function(done){
-          fastimage.type("http://placehold.it/200x100", function(error, info){
+          fastimage.type("http://placehold.it/200x100.png", function(error, info){
             verify(done, function(){
               expect(info).to.equal("png");
             });
