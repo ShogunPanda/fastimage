@@ -415,62 +415,23 @@
         });
       });
     });
-    /*
-    describe("outgoing request", function(){
-      var waitForTestToCallRequest, defaultUserAgent;
 
-      beforeEach(function(){
-        defaultUserAgent = "Fast Image - Node Image Lookup - https://www.npmjs.com/package/fastimage";
-        waitForTestToCallRequest = new Promise(function (res) {
-          sinon.stub(request, "get", function (outgoingRequest) {
-            res(outgoingRequest);
-            var ret = {
-              on: function () {
-                return ret;
-              }
-            };
-            return ret;
+    describe("side cases", function(){
+      // This is a file which is corrupted. To correctly recognize the threshold must be disabled.
+      it("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", function(done){
+        fastimage.type("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", function(error, info){
+          verify(done, function(){
+            expect(error.code).to.be("UNSUPPORTED_TYPE");
+
+            fastimage.threshold(-1);
+            fastimage.type("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", function(error, info){
+              verify(done, function(){
+                expect(info).to.equal("jpg");
+              });
+            });
           });
         });
       });
-      afterEach(function(){
-        request.get.restore();
-      });
-
-      it("should contain a default user agent string", function (done) {
-        waitForTestToCallRequest.then(function (outgoingRequest) {
-          expect(outgoingRequest.headers["user-agent"]).to.be(defaultUserAgent);
-          done();
-        }).catch(done);
-
-        fastimage.info("http://example.com/");
-      });
-
-      it("should contain a default user agent string", function (done) {
-        var newUserAgentString = "Hello World!";
-
-        waitForTestToCallRequest.then(function (outgoingRequest) {
-          expect(outgoingRequest.headers["user-agent"]).to.be(newUserAgentString);
-          done();
-        }).catch(done);
-
-        fastimage.userAgent(newUserAgentString);
-        fastimage.info("http://example.com/");
-      });
-
-      it("should have a standard setter/getter for user agent string", function (done) {
-        waitForTestToCallRequest.then(function (outgoingRequest) {
-          expect(outgoingRequest.headers["user-agent"]).to.be(defaultUserAgent);
-          done();
-        }).catch(done);
-
-        fastimage.userAgent("this will never actually be used");
-        expect(fastimage.userAgent()).to.eql("this will never actually be used");
-        fastimage.userAgent(null);
-        expect(fastimage.userAgent()).to.eql(defaultUserAgent);
-        fastimage.info("http://example.com/");
-      });
     });
-    */
   });
 })();
