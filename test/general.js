@@ -151,6 +151,20 @@ describe("using callbacks", function(){
         });
       });
 
+      it("should return a error when the URL is not a image when downloading the entire file", done => {
+        fastimage.threshold(-1);
+        fastimage.info("http://www.google.com/robots.txt", (error, info) => {
+          verify(done, () => {
+            expect(info).not.to.exist;
+            expect(error).to.be.instanceof(fastimage.FastImageError);
+
+            expect(error.code).to.equal("UNSUPPORTED_TYPE");
+            expect(error.message).to.equal("Unsupported image file.");
+            fastimage.threshold(null);
+          });
+        });
+      });
+
       it("should handle connection timeouts", done => {
         fastimage.timeout(1);
 

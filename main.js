@@ -31,8 +31,8 @@ module.exports = {
    *   "width": 1000, // The width of the image in pixels.
    *   "height": 1000, // The height of the image in pixels.
    *   "type": "gif", // The type of the image. Can be `bmp`, `gif`, `jpeg`, `png`, `psd`, `tif`, `webp` or `svg`.
-   *   "subject": "http://placehold.it/1000x1000.gif", // The original URL of the image.
-   *   "realUrl": "http://placehold.it/1000x1000.gif", // The real URL of the image after all the redirects. It will be omitted if equals to the URL.
+   *   "url": "http://placehold.it/1000x1000.gif", // The original URL of the image.
+   *   "realUrl": "http://placehold.it/1000x1000.gif", // The real URL of the image after all the redirects.
    *   "size": 24090, // The size of the image (in bytes). Present only if the server returned the Content-Length HTTP header.
    *   "transferred": 979, // The amount of data transferred (in bytes) to identify the image.
    *   "time": 171.43721 // The time required for the operation, in milliseconds.
@@ -47,7 +47,7 @@ module.exports = {
    *   "height": 150, // The height of the image in pixels.
    *   "type": "png", // The type of the image. Can be `bmp`, `gif`, `jpeg`, `png`, `psd`, `tif`, `webp` or `svg`.
    *   "path": "1.png", // The original path of the image.
-   *   "realPath": "/home/user/1.png", // The absolute path of the image. It will be omitted if equals to the path.
+   *   "realPath": "/home/user/1.png", // The absolute path of the image.
    *   "size": 24090, // The size (in bytes) of the image.
    *   "time": 14.00558 // The time required for the operation, in milliseconds.
    * }

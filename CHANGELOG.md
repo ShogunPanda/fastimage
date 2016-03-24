@@ -1,6 +1,7 @@
 ### 2016-03-23 / 2.0.0
 
 * **Dropped support for Node < 5.**
+* `fastimage.info` always includes `realPath` and `realUrl` instead of omitting them if equals to `path` and `url`.
 
 ### 2016-03-08 / 1.2.0
 
