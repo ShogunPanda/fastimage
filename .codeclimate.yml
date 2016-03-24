@@ -6,6 +6,7 @@
 ---
 exclude_paths:
   - coverage/**/*
+  - examples/**/*
   - docs/**/*
   - test/**/*
 engines:
