@@ -7,7 +7,7 @@
     "port": 65000
   },
   "url": "http://127.0.0.1:65000/100x100",
-  "time": 4,
+  "time": 2,
   "request": {
     "method": "GET",
     "headers": {

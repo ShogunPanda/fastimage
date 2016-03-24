@@ -1,0 +1,25 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "server": "imgix-fe",
+    "cache-control": "max-age=1800",
+    "fastly-debug-digest": "0efeecbbc85905f8b4548c67d3b97dc50a9f77dd774d11df151bb703b835165f",
+    "content-length": "4479",
+    "accept-ranges": "bytes",
+    "date": "Thu, 24 Mar 2016 10:03:23 GMT",
+    "age": "1636066",
+    "connection": "keep-alive",
+    "content-type": "image/png",
+    "x-imgix-request-id": "4e845dfef54f60d83bbaa7c0e79df48edbdc5724"
+  },
+  "url": "https://placeholdit.imgix.net:443/~text?txtsize=19&txt=200%C3%97100&w=200&h=100",
+  "time": 526,
+  "request": {
+    "method": "GET",
+    "headers": {
+      "User-Agent": "AGENT",
+      "referer": "http://placehold.it/200x100",
+      "host": "placeholdit.imgix.net"
+    }
+  }
+}

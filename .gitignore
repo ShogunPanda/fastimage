@@ -1,5 +1,4 @@
-node_modules
-coverage.html
-examples.js
 .idea
-.nvmrc
+node_modules
+coverage/
+npm-debug.log

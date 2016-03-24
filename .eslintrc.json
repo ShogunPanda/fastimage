@@ -1,9 +1,10 @@
 {
   "env": {
+    "es6": true,
     "node": true
   },
   "parserOptions": {
-    "sourceType": "require"
+    "ecmaVersion": 6
   },
   "rules": {
     // Recommended
@@ -101,7 +102,7 @@
     "wrap-iife": [2, "inside"],
     "yoda": 0,
     // Strict
-    "strict": [2, "function"],
+    "strict": 0,
     // Variables
     "init-declarations": 2,
     "no-catch-shadow": 2,
@@ -116,7 +117,7 @@
     "no-use-before-define": 2,
     // NodeJS and CommonJS
     "callback-return": [2, ["callback", "cb"]],
-    "global-require": 0,
+    "global-require": 2,
     "handle-callback-err": 2,
     "no-mixed-requires": 2,
     "no-new-require": 2,
@@ -145,7 +146,11 @@
     "key-spacing": [2, {"beforeColon": false, "afterColon": true, "mode": "strict"}],
     "keyword-spacing": [2, {
       "before": false, "after": false,
-      "overrides": {"let": {"after": true}, "const": {"after": true}, "case": {"after": true}, "return": {"after": true}, "import": {"after": true}, "from": {"before": true, "after": true}, "as": {"before": true, "after": true}}
+      "overrides": {
+        "let": {"after": true}, "const": {"after": true}, "throw": {"after": true},
+        "case": {"after": true}, "return": {"after": true},
+        "export": {"after": true}, "default": {"after": true}, "import": {"after": true}, "from": {"before": true, "after": true}, "as": {"before": true, "after": true}
+      }
     }],
     "linebreak-style": [2, "unix"],
     "lines-around-comment": 0,
@@ -195,6 +200,30 @@
     "space-infix-ops": 2,
     "space-unary-ops": [2, {"words": true, "nonwords": false}],
     "spaced-comment": [2, "always"],
-    "wrap-regex": 2
+    "wrap-regex": 2,
+    // ES 6
+    "arrow-body-style": [2, "as-needed"],
+    "arrow-parens": [2, "as-needed"],
+    "arrow-spacing": [2, { "before": true, "after": true }],
+    "constructor-super": 0,
+    "generator-star-spacing": [2, {"before": true, "after": false}],
+    "no-class-assign": 2,
+    "no-confusing-arrow": 2,
+    "no-const-assign": 2,
+    "no-dupe-class-members": 2,
+    "no-new-symbol": 2,
+    "no-this-before-super": 0,
+    "no-useless-constructor": 2,
+    "no-var": 2,
+    "object-shorthand": [1, "always"],
+    "prefer-arrow-callback": 2,
+    "prefer-const": 2,
+    "prefer-reflect": [2, {"exceptions": ["apply", "call"]}],
+    "prefer-rest-params": 0,
+    "prefer-spread": 2,
+    "prefer-template": 2,
+    "require-yield": 2,
+    "template-curly-spacing": [2, "never"],
+    "yield-star-spacing": [2, "before"]
   }
 }

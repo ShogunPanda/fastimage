@@ -1,0 +1,8 @@
+{
+  "url": "http://placehold1.it:80/",
+  "method": "GET",
+  "headers": {
+    "host": "placehold1.it"
+  },
+  "body": ""
+}

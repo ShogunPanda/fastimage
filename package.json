@@ -11,12 +11,12 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "postpublish": "git tag -f v-$npm_package_version && git push origin --tags && git push origin",
-    "test": "./node_modules/.bin/mocha",
-    "posttest": "./node_modules/.bin/eslint main.js lib/*.js",
-    "coverage": "./node_modules/.bin/mocha --require blanket -R html-cov > coverage.html; true",
-    "travis-ci": "./node_modules/.bin/mocha --require blanket -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js; true",
-    "docs": "./node_modules/.bin/jsdoc -c jsdoc.conf"
+    "postpublish": "git push origin --tags && git push origin",
+    "test": "VCR_MODE=playback ./node_modules/.bin/mocha",
+    "posttest": "./node_modules/.bin/eslint main.js lib/*.js test/*.js",
+    "coverage": "VCR_MODE=playback ./node_modules/.bin/istanbul --report=html cover ./node_modules/.bin/_mocha",
+    "travis-ci": "VCR_MODE=playback ./node_modules/.bin/istanbul --report=lcovonly cover ./node_modules/.bin/_mocha && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls.js",
+    "docs": "./node_modules/.bin/jsdoc -c .jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r"
   },
   "repository": {
     "type": "git",
@@ -46,30 +46,20 @@
     "url": "https://github.com/ShogunPanda/fastimage/issues"
   },
   "homepage": "https://sw.cowtech.it/fastimage",
-  "devDependencies": {
-    "blanket": "^1.1.6",
-    "coveralls": "^2.11.2",
-    "eslint": "~2.2.0",
-    "expect.js": "^0.3.1",
-    "jsdoc": "^3.3.0-beta2",
-    "mocha": "~2.1.0",
-    "mocha-lcov-reporter": "0.0.2",
-    "sepia": "^2.0.1",
-    "sinon": "^1.17.3",
-    "through": "^2.3.6"
-  },
-  "config": {
-    "blanket": {
-      "pattern": [
-        "main.js",
-        "lib"
-      ],
-      "data-cover-never": "node_modules"
-    }
-  },
   "dependencies": {
-    "image-size": "^0.3.5",
-    "promise": "^7.0.1",
-    "request": "^2.54.0"
+    "image-size": "~0.5.0",
+    "request": "~2.69.0"
+  },
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "coveralls": "~2.11.8",
+    "eslint": "~2.4.0",
+    "ink-docstrap": "~1.1.4",
+    "istanbul": "~0.4.2",
+    "jsdoc": "~3.4.0",
+    "mocha": "~2.4.5",
+    "sinon": "~1.17.3",
+    "sepia": "^2.0.1",
+    "through": "^2.3.6"
   }
 }

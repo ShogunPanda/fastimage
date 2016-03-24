@@ -1,0 +1,9 @@
+{
+  "url": "http://placehold.it:80/200x100.png",
+  "method": "GET",
+  "headers": {
+    "User-Agent": "AGENT",
+    "host": "placehold.it"
+  },
+  "body": ""
+}

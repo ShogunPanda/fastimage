@@ -1,3 +1,7 @@
+### 2016-03-23 / 2.0.0
+
+* **Dropped support for Node < 5.**
+
 ### 2016-03-08 / 1.2.0
 
 * `fastimage.threshold` can now accept value less than or equal to zero to disable the feature and try to download/open the entire file/stream. This fixes detection of corrupted files.  

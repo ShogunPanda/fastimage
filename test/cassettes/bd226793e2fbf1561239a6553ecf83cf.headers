@@ -1,20 +1,19 @@
 {
   "statusCode": 404,
   "headers": {
-    "date": "Sat, 28 Mar 2015 22:29:25 GMT",
-    "content-type": "text/html",
+    "date": "Thu, 24 Mar 2016 10:03:22 GMT",
+    "content-type": "text/html; charset=iso-8859-1",
     "transfer-encoding": "chunked",
     "connection": "keep-alive",
     "set-cookie": [
-      "__cfduid=d616d7f56be649418e0bce1e43f051c591427581765; expires=Sun, 27-Mar-16 22:29:25 GMT; path=/; domain=.placehold.it; HttpOnly"
+      "__cfduid=d04b6dd2aa4d06b7ffe8b20233755e5071458813801; expires=Fri, 24-Mar-17 10:03:21 GMT; path=/; domain=.placehold.it; HttpOnly"
     ],
-    "cache-control": "max-age=7200, must-revalidate",
-    "cf-cache-status": "HIT",
+    "cf-cache-status": "EXPIRED",
     "server": "cloudflare-nginx",
-    "cf-ray": "1ce6c612d54f11a1-SJC"
+    "cf-ray": "28894af49270434c-MXP"
   },
   "url": "http://placehold.it:80/foo",
-  "time": 53,
+  "time": 477,
   "request": {
     "method": "GET",
     "headers": {

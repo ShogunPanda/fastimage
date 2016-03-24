@@ -1,0 +1,26 @@
+{
+  "statusCode": 301,
+  "headers": {
+    "date": "Thu, 24 Mar 2016 10:03:23 GMT",
+    "content-type": "text/html",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "set-cookie": [
+      "__cfduid=d397235ca7bb1e4afe64a0dd60106e8971458813803; expires=Fri, 24-Mar-17 10:03:23 GMT; path=/; domain=.placehold.it; HttpOnly"
+    ],
+    "location": "https://placeholdit.imgix.net/~text?txtsize=19&txt=200%C3%97100&w=200&h=100&fm=png",
+    "expires": "Thu, 24 Mar 2016 14:03:23 GMT",
+    "cache-control": "public, max-age=14400",
+    "server": "cloudflare-nginx",
+    "cf-ray": "28894aff335b0e12-MXP"
+  },
+  "url": "http://placehold.it:80/200x100.png",
+  "time": 134,
+  "request": {
+    "method": "GET",
+    "headers": {
+      "User-Agent": "AGENT",
+      "host": "placehold.it"
+    }
+  }
+}

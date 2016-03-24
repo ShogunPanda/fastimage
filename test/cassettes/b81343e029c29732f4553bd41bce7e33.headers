@@ -1,0 +1,23 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "last-modified": "Fri, 17 May 2013 16:57:49 GMT",
+    "content-type": "image/jpeg",
+    "timing-allow-origin": "*",
+    "access-control-allow-origin": "*",
+    "expires": "Thu, 07 Apr 2016 08:49:54 GMT",
+    "cache-control": "max-age=1209600, no-transform",
+    "date": "Thu, 24 Mar 2016 10:03:21 GMT",
+    "connection": "keep-alive",
+    "content-length": "1231"
+  },
+  "url": "http://scontent.xx.fbcdn.net:443/hprofile-prn2/v/t1.0-1/c9.0.50.50/p50x50/946925_633969773280915_1002140391_n.jpg?oh=ddbe287648ffad88d5176282513a263c&oe=5795100C",
+  "time": 827,
+  "request": {
+    "method": "GET",
+    "headers": {
+      "referer": "http://graph.facebook.com/Nodejs/picture",
+      "host": "scontent.xx.fbcdn.net"
+    }
+  }
+}
