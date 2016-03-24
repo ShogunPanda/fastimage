@@ -8,3 +8,10 @@ exclude_paths:
   - coverage/**/*
   - docs/**/*
   - test/**/*
+engines:
+  eslint:
+    enabled: true
+  env:
+    node: true
+    mocha: true
+    es6: true

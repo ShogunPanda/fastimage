@@ -1,9 +1,0 @@
-{
-  "url": "https://upload.wikimedia.org:443/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg",
-  "method": "GET",
-  "headers": {
-    "User-Agent": "AGENT",
-    "host": "upload.wikimedia.org"
-  },
-  "body": ""
-}

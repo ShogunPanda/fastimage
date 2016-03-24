@@ -8,7 +8,7 @@
     "port": 80
   },
   "url": "http://placehold1.it:80/",
-  "time": 290,
+  "time": 3,
   "request": {
     "method": "GET",
     "headers": {

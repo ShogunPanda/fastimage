@@ -3,7 +3,7 @@
     "code": "ECONNRESET"
   },
   "url": "http://127.0.0.1:65001/",
-  "time": 2,
+  "time": 3,
   "request": {
     "method": "GET",
     "headers": {

@@ -1,8 +1,0 @@
-{
-  "url": "http://placehold.it:80/100x100.png",
-  "method": "GET",
-  "headers": {
-    "host": "placehold.it"
-  },
-  "body": ""
-}

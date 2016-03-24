@@ -9,13 +9,13 @@
 "use strict";
 
 const expect = require("chai").expect;
-const sepia = require("sepia");
 const fs = require("fs");
 const path = require("path");
 const net = require("net");
 const sinon = require("sinon");
 const request = require("request");
 const fastimage = require("../main");
+const sepia = require("sepia");
 
 const PORT = 65001;
 const TIMEOUT = 5000;
@@ -31,9 +31,6 @@ const SAMPLE_OTHER_SIZE = 22500;
 const SAMPLE_ANALYZED = 10000;
 const SAMPLE_PORTION = 1000;
 
-sepia.configure({verbose: true});
-sepia.fixtureDir(path.join(__dirname, "cassettes"));
-
 const verify = function(done, checks){
   try{
     checks();
@@ -42,6 +39,9 @@ const verify = function(done, checks){
     done(e);
   }
 };
+
+sepia.fixtureDir(path.join(__dirname, "cassettes"));
+sepia.filter({url: /timeout|wikimedia/, forceLive: true});
 
 describe("threshold", () => {
   it("should set and get the value", () => {
@@ -428,19 +428,23 @@ describe("using callbacks", function(){
       });
     });
   });
+});
 
-  describe("side cases", () => {
-    // This is a file which is corrupted. To correctly recognize the threshold must be disabled.
-    it("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", done => {
-      fastimage.type("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", error => {
-        verify(done, () => {
-          expect(error.code).to.equal("UNSUPPORTED_TYPE");
+describe("side cases", function(){
+  this.timeout(TIMEOUT);
 
-          fastimage.threshold(-1);
-          fastimage.type("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", (e, i) => {
-            verify(done, () => {
-              expect(i).to.equal("jpg");
-            });
+  // This is a file which is corrupted. To correctly recognize the threshold must be disabled.
+  it("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", done => {
+    fastimage.type("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", error => {
+      verify(done, () => {
+        expect(error.code).to.equal("UNSUPPORTED_TYPE");
+
+        fastimage.threshold(-1);
+        fastimage.type("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", (e, i) => {
+          fastimage.threshold(null);
+
+          verify(done, () => {
+            expect(i).to.equal("jpg");
           });
         });
       });

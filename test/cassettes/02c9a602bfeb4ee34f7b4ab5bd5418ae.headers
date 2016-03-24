@@ -3,20 +3,20 @@
   "headers": {
     "access-control-allow-origin": "*",
     "content-type": "image/jpeg",
-    "x-fb-trace-id": "BM+1IBSZuZn",
-    "x-fb-rev": "2246636",
+    "x-fb-trace-id": "CeQQ/zeJyW6",
+    "x-fb-rev": "2247690",
     "pragma": "no-cache",
     "location": "https://scontent.xx.fbcdn.net/hprofile-prn2/v/t1.0-1/c9.0.50.50/p50x50/946925_633969773280915_1002140391_n.jpg?oh=ddbe287648ffad88d5176282513a263c&oe=5795100C",
     "cache-control": "private, no-cache, no-store, must-revalidate",
     "facebook-api-version": "v2.0",
     "expires": "Sat, 01 Jan 2000 00:00:00 GMT",
-    "x-fb-debug": "MQZ95Mc5i14dcdFQpKJkCKS77gdK/w0DEvs1J3RDjZSuY5m+QM6pT4ymUrtqL2REjg3U2QYDDPq4+jRvOjLQng==",
-    "date": "Thu, 24 Mar 2016 10:03:20 GMT",
+    "x-fb-debug": "l6vB5DGMsbDqijgz2Bfjyics4z+fpLiqTKfv+FFfrgmq/UCOjzuweh48myMvvgCPgUec7jWS/bqX5jxlb+8scQ==",
+    "date": "Thu, 24 Mar 2016 11:18:35 GMT",
     "connection": "keep-alive",
     "content-length": "0"
   },
   "url": "http://graph.facebook.com:80/Nodejs/picture",
-  "time": 539,
+  "time": 364,
   "request": {
     "method": "GET",
     "headers": {

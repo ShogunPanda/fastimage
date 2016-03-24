@@ -6,14 +6,14 @@
     "fastly-debug-digest": "25f1ae4ae298723af562d1242c06e85d89082d834fed33f6433e6b08a3323b2d",
     "content-length": "4479",
     "accept-ranges": "bytes",
-    "date": "Thu, 24 Mar 2016 10:03:23 GMT",
-    "age": "25377",
+    "date": "Thu, 24 Mar 2016 11:18:36 GMT",
+    "age": "2582965",
     "connection": "keep-alive",
     "content-type": "image/png",
-    "x-imgix-request-id": "deded6134c4a8bc60ac38d30cc5aa8d92a29b7f5"
+    "x-imgix-request-id": "730b3159e96c21cbe15ee7783badcce441516d77"
   },
   "url": "https://placeholdit.imgix.net:443/~text?txtsize=19&txt=200%C3%97100&w=200&h=100&fm=png",
-  "time": 578,
+  "time": 239,
   "request": {
     "method": "GET",
     "headers": {

@@ -3,8 +3,8 @@
   "headers": {
     "vary": "Accept-Encoding",
     "content-type": "text/plain",
-    "date": "Thu, 24 Mar 2016 10:03:22 GMT",
-    "expires": "Thu, 24 Mar 2016 10:03:22 GMT",
+    "date": "Thu, 24 Mar 2016 11:18:36 GMT",
+    "expires": "Thu, 24 Mar 2016 11:18:36 GMT",
     "cache-control": "private, max-age=0",
     "last-modified": "Fri, 04 Mar 2016 19:02:51 GMT",
     "x-content-type-options": "nosniff",
@@ -14,7 +14,7 @@
     "transfer-encoding": "chunked"
   },
   "url": "http://www.google.com:80/robots.txt",
-  "time": 513,
+  "time": 144,
   "request": {
     "method": "GET",
     "headers": {
