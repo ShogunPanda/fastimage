@@ -436,17 +436,13 @@ describe("side cases", function(){
   // This is a file which is corrupted. To correctly recognize the threshold must be disabled.
   it("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", done => {
     fastimage.type("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", error => {
-      verify(done, () => {
-        expect(error.code).to.equal("UNSUPPORTED_TYPE");
+      expect(error.code).to.equal("UNSUPPORTED_TYPE");
 
-        fastimage.threshold(-1);
-        fastimage.type("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", (e, i) => {
-          fastimage.threshold(null);
-
-          verify(done, () => {
-            expect(i).to.equal("jpg");
-          });
-        });
+      fastimage.threshold(-1);
+      fastimage.type("https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg", (e, i) => {
+        fastimage.threshold(null);
+        expect(i).to.equal("jpg");
+        done();
       });
     });
   });
