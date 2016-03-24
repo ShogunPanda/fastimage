@@ -15,7 +15,7 @@
     "test": "VCR_MODE=playback ./node_modules/.bin/mocha",
     "posttest": "./node_modules/.bin/eslint main.js lib/*.js test/*.js",
     "coverage": "VCR_MODE=playback ./node_modules/.bin/istanbul --report=html cover ./node_modules/.bin/_mocha",
-    "travis-ci": "VCR_MODE=playback ./node_modules/.bin/istanbul --report=lcovonly cover ./node_modules/.bin/_mocha && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls.js",
+    "travis-ci": "VCR_MODE=playback ./node_modules/.bin/istanbul --report=lcovonly cover ./node_modules/.bin/_mocha && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls",
     "docs": "./node_modules/.bin/jsdoc -c .jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r"
   },
   "repository": {
