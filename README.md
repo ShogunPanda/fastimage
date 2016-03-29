@@ -3,7 +3,6 @@
 [![Gem Version](https://badge.fury.io/js/fastimage.png)](http://badge.fury.io/js/fastimage)
 [![Dependency Status](https://gemnasium.com/ShogunPanda/fastimage.png?travis)](https://gemnasium.com/ShogunPanda/fastimage)
 [![Build Status](https://secure.travis-ci.org/ShogunPanda/fastimage.png?branch=master)](http://travis-ci.org/ShogunPanda/fastimage)
-[![Code Climate](https://codeclimate.com/github/ShogunPanda/fastimage.png)](https://codeclimate.com/github/ShogunPanda/fastimage)
 [![Coverage Status](https://coveralls.io/repos/ShogunPanda/fastimage/badge.png)](https://coveralls.io/r/ShogunPanda/fastimage)
 
 FastImage finds the size or type of an image given its URL by fetching as little as needed.
