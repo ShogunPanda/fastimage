@@ -48,7 +48,7 @@
   "homepage": "https://sw.cowtech.it/fastimage",
   "dependencies": {
     "image-size": "~0.5.0",
-    "request": "~2.69.0"
+    "request": "~2.74.0"
   },
   "devDependencies": {
     "chai": "~3.5.0",
