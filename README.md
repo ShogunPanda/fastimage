@@ -79,10 +79,6 @@ fastimage.stream("http://placehold.it/100x100.png").pipe(/*...*/);
 
 Streams will emit the `size` and `type` if you only need those informations.
 
-## Supported implementations.
-
-Fastimage supports and has been tested on [NodeJS](http://nodejs.org) 0.10+ and [io.js](http://iojs.org) 1.0+.
-
 ## API Documentation
 
 The API documentation can be found [here](https://sw.cowtech.it/fastimage/docs).
