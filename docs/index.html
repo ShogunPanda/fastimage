@@ -1,77 +1,39 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>Fastimage Index</title>
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.sandstone.css">
-
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Fastimage</a>
-		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-        </button>
-	</div>
-	<div class="navbar-collapse collapse" id="topNavigation">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="module-fastimage.html">fastimage</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="module-fastimage.FastImageError.html">fastimage.FastImageError</a></li><li><a href="module-fastimage.FastImageStream.html">fastimage.FastImageStream</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-		<div class="col-sm-3 col-md-3">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-	</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-</div>
-</div>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-fastimage.FastImageError.html">FastImageError</a></li><li><a href="module-fastimage.FastImageStream.html">FastImageStream</a></li></ul><h3>Modules</h3><ul><li><a href="module-fastimage.html">fastimage</a><ul class='methods'><li data-type='method'><a href="module-fastimage.html#.filteredInfo">filteredInfo</a></li><li data-type='method'><a href="module-fastimage.html#.info">info</a></li><li data-type='method'><a href="module-fastimage.html#.size">size</a></li><li data-type='method'><a href="module-fastimage.html#.stream">stream</a></li><li data-type='method'><a href="module-fastimage.html#.threshold">threshold</a></li><li data-type='method'><a href="module-fastimage.html#.timeout">timeout</a></li><li data-type='method'><a href="module-fastimage.html#.type">type</a></li><li data-type='method'><a href="module-fastimage.html#.userAgent">userAgent</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
 
 
-<div class="container" id="toc-content">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
-
-	
-	
+    
 
 
 
@@ -81,21 +43,14 @@
 
 
 
+    
 
 
-	
-	
-
-
-
-
-
-    <section class="readme-section">
+    <section class="readme">
         <article><h1>fastimage</h1><p><a href="http://badge.fury.io/js/fastimage"><img src="https://badge.fury.io/js/fastimage.png" alt="Gem Version"></a>
 <a href="https://gemnasium.com/ShogunPanda/fastimage"><img src="https://gemnasium.com/ShogunPanda/fastimage.png?travis" alt="Dependency Status"></a>
 <a href="http://travis-ci.org/ShogunPanda/fastimage"><img src="https://secure.travis-ci.org/ShogunPanda/fastimage.png?branch=master" alt="Build Status"></a>
-<a href="https://codeclimate.com/github/ShogunPanda/fastimage"><img src="https://codeclimate.com/github/ShogunPanda/fastimage.png" alt="Code Climate"></a>
-<a href="https://coveralls.io/r/ShogunPanda/fastimage"><img src="https://coveralls.io/repos/ShogunPanda/fastimage/badge.png" alt="Coverage Status"></a></p>
+<a href="https://coveralls.io/github/ShogunPanda/fastimage?branch=master"><img src="https://coveralls.io/repos/github/ShogunPanda/fastimage/badge.svg?branch=master" alt="Coverage Status"></a></p>
 <p>FastImage finds the size or type of an image given its URL by fetching as little as needed.</p>
 <p>http://sw.cowtech.it/fastimage</p>
 <p>The supported image type are (thanks to the <a href="https://github.com/netroy/image-size">image-size</a> module):</p>
@@ -109,6 +64,7 @@
 <li>WebP</li>
 <li>SVG</li>
 </ul>
+<h2>Supported implementations.</h2><p>FastImage supports and has been tested on <a href="http://nodejs.org">NodeJS</a> 5.0+. </p>
 <h2>Usage</h2><p>For more details usage examples, see the <code>examples</code> folder.</p>
 <h3>Callback style</h3><p>To get the image informations, call <code>fastimage.info</code> passing the URL (can be also a local file path or a Buffer) and a callback.</p>
 <pre class="prettyprint source lang-javascript"><code>var fastimage = require(&quot;fastimage&quot;);
@@ -137,73 +93,7 @@ request(&quot;http://placehold.it/100x100.png&quot;).pipe(fastimage.stream()).pi
 // Readable
 fastimage.stream(&quot;http://placehold.it/100x100.png&quot;).pipe(/*...*/);</code></pre><p>Streams will emit the <code>size</code> and <code>type</code> if you only need those informations.</p>
 <h2>Supported implementations.</h2><p>Fastimage supports and has been tested on <a href="http://nodejs.org">NodeJS</a> 0.10+ and <a href="http://iojs.org">io.js</a> 1.0+.</p>
-<h2>API Documentation</h2><h3>fastimage.info(subject, [callback])</h3><p>Analyzes a URL (local or remote) or a Buffer and return the image informations.</p>
-<p>The signature of the callback is <code>function(error, info)</code>.</p>
-<p>The first argument of the callback, when failed, will be a <a href="#user-content-fastimageFastImageError">FastImageError</a> instance.</p>
-<p>The second argument of the callback, when successful, will be a object containing the image informations.</p>
-<p>Specifically, when the URL is a remote URL, the object will be similar to this:</p>
-<pre class="prettyprint source lang-javascript"><code>{
-  &quot;width&quot;: 1000, // The width of the image in pixels.
-  &quot;height&quot;: 1000, // The height of the image in pixels.
-  &quot;type&quot;: &quot;gif&quot;, // The type of the image. Can be `bmp`, `gif`, `jpeg`, `png`, `psd`, `tif`, `webp` or `svg`.
-  &quot;url&quot;: &quot;http://placehold.it/1000x1000.gif&quot;, // The original URL of the image.
-  &quot;realUrl&quot;: &quot;http://placehold.it/1000x1000.gif&quot;, // The real URL of the image after all the redirects. It will be omitted if equals to the URL.
-  &quot;size&quot;: 24090, // The size of the image (in bytes). Present only if the server returned the Content-Length HTTP header.
-  &quot;transferred&quot;: 979, // The amount of data transferred (in bytes) to identify the image.
-  &quot;time&quot;: 171.43721 // The time required for the operation, in milliseconds.
-}</code></pre><p>When the URL is a local file the object will be similar to this:</p>
-<pre class="prettyprint source lang-javascript"><code>{
-  &quot;width&quot;: 150, // The width of the image in pixels.
-  &quot;height&quot;: 150, // The height of the image in pixels.
-  &quot;type&quot;: &quot;png&quot;, // The type of the image. Can be `bmp`, `gif`, `jpeg`, `png`, `psd`, `tif`, `webp` or `svg`.
-  &quot;path&quot;: &quot;1.png&quot;, // The original path of the image.
-  &quot;realPath&quot;: &quot;/home/user/1.png&quot;, // The absolute path of the image. It will be omitted if equals to the path.
-  &quot;size&quot;: 24090, // The size (in bytes) of the image.
-  &quot;time&quot;: 14.00558 // The time required for the operation, in milliseconds.
-}</code></pre><p>When the source is a Buffer the object will be similar to this:</p>
-<pre class="prettyprint source lang-javascript"><code>{
-  &quot;width&quot;: 150, // The width of the image in pixels.
-  &quot;height&quot;: 150, // The height of the image in pixels.
-  &quot;type&quot;: &quot;png&quot;, // The type of the image. Can be `bmp`, `gif`, `jpeg`, `png`, `psd`, `tif`, `webp` or `svg`.
-  &quot;analyzed&quot;: 4096 // The number of bytes analyzed.
-  &quot;time&quot;: 14.00558 // The time required for the operation, in milliseconds.
-}</code></pre><p>The function will return a Promise, which will resolve providing the information object.</p>
-<h3>fastimage.size(subject, [callback])</h3><p>Analyzes a URL (local or remote) or a Buffer and return the image size.</p>
-<p>The signature of the callback is <code>function(error, dimensions)</code>.</p>
-<p>The first argument of the callback, when failed, will be a <a href="#user-content-fastimageFastImageError">FastImageError</a> instance.</p>
-<p>The second argument of the callback, when successful, will be a object containing the fields <code>width</code> and <code>height</code> in pixels.</p>
-<p>The function will return a Promise, which will resolve providing the information object.</p>
-<h3>fastimage.type(subject, [callback])</h3><p>Analyzes a URL (local or remote) or a Buffer and return the image type.</p>
-<p>The signature of the callback is <code>function(error, type)</code>.</p>
-<p>The first argument of the callback, when failed, will be a <a href="#user-content-fastimageFastImageError">FastImageError</a> instance.</p>
-<p>The second argument of the callback, when successful, will be the type of the image.</p>
-<p>The function will return a Promise, which will resolve providing the image type.</p>
-<h3>fastimage.filteredInfo(subject, [filter, callback])</h3><p>Analyzes a URL (local or remote) or a Buffer and return the image informations passing through a filter function.</p>
-<p>The filter function should accept an object as input and return the object to be passed to the callback.</p>
-<p>For details on the input object of the filter, see <a href="#user-content-fastimageinfosubject-callback">fastimage.info</a>.</p>
-<p>The signature of the callback is <code>function(error, info)</code>.</p>
-<p>The first argument of the callback, when failed, will be a <a href="#user-content-fastimageFastImageError">FastImageError</a> instance.</p>
-<p>The second argument of the callback, when successful, will be a object containing the image informations.</p>
-<p>The function will return a Promise, which will resolve providing the filtered information object.</p>
-<h3>fastimage.stream(subject, [options])</h3><p>Creates a new fastimage stream analysis. This is a Duplex stream which works in object mode on the readable side.</p>
-<p>It will emit the following events:</p>
-<ul>
-<li><strong>size</strong>: The payload will be a object containing the fields <code>width</code> and <code>height</code> in pixels.</li>
-<li><strong>type</strong>: The payload will the type of the image.</li>
-</ul>
-<h3>fastimage.timeout([timeout])</h3><p>Gets or sets the maximum number of seconds to wait to connect to a host.</p>
-<p>If the value is present, it will also set the new value. If the value is <code>null</code>, it will restore the default value.</p>
-<p>The default value is <code>30000</code>.</p>
-<h3>fastimage.threshold([threshold])</h3><p>Gets or sets the maximum number of bytes to read to attempt an identification before giving up and state that the source is not an image.</p>
-<p>If the value is present, it will also set the new value. If the value is <code>null</code>, it will restore the default value.</p>
-<p>The default value is <code>4096</code>.</p>
-<h3>fastimage.userAgent([userAgent])</h3><p>Gets or sets the User Agent String to send on outgoing requests.</p>
-<p>If the value is present, it will also set the new value. If the value is <code>null</code>, it will restore the default value.</p>
-<p>The default value is <code>4096</code>.</p>
-<h3>fastimage.FastImageStream</h3><p>A image analysis stream.</p>
-<p>Streams will emit the <code>size</code> and <code>type</code> if you only need those informations about the image.</p>
-<h3>fastimage.FastImageError</h3><p>This error will be returned as the first argument of the callbacks if anything goes wrong.</p>
-<p>It always have the <code>message</code> and <code>code</code> fields set.</p>
+<h2>API Documentation</h2><p>The API documentation can be found <a href="https://sw.cowtech.it/fastimage/docs">here</a>.</p>
 <h2>Contributing to fastimage</h2><ul>
 <li>Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.</li>
 <li>Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.</li>
@@ -221,130 +111,15 @@ fastimage.stream(&quot;http://placehold.it/100x100.png&quot;).pipe(/*...*/);</co
 
 
 
-
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
-	
-
-</div>
 </div>
 
-<div class="modal fade" id="searchResults">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Search results</h4>
-      </div>
-      <div class="modal-body"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	2015 and above Shogun <shogun@cowtech.it>
-	</span>
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
-	
-	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Aug 18 2016 14:54:05 GMT+0200 (CEST) using the Minami theme.
 </footer>
 
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/toc.js"></script>
-<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
-			lang = langClassMatch ? langClassMatch[1] : "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-
-	$.catchAnchorLinks( {
-        navbarOffset: 10
-	} );
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			var id = $( heading ).attr( "id" );
-			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
-		},
-		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
-		showAndHide : false,
-		smoothScrolling: true
-	} );
-
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-
-    $( "table" ).each( function () {
-      var $this = $( this );
-      $this.addClass('table');
-    } );
-
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		SearcherDisplay.init();
-	});
-</script>
-
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
 </body>
 </html>

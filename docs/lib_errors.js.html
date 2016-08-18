@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>FastImageStream - Documentation</title>
+    <title>lib/errors.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,134 +28,82 @@
 
 <div id="main">
     
-    <h1 class="page-title">FastImageStream</h1>
+    <h1 class="page-title">lib/errors.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="module-fastimage.html">fastimage</a>.</span>
-        
-        FastImageStream
-        </h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * This file is part of the fastimage npm package. Copyright (C) 2015 and above Shogun &lt;shogun@cowtech.it>.
+ * Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
+ */
 
-<article>
-    <div class="container-overview">
-    
-        
+/**
+ * The error used by fastimage.
+ *
+ * @class module:fastimage.FastImageError
+ * @param {string} message - The description of the message.
+ * @param {string} attributes - The attributes of the error.
+ */
+const FastImageError = function(message, attributes){
+  // Setup the error
+  Error.call(this);
+  Error.captureStackTrace(this, this.constructor);
 
-    
+  // Setup inspecting
+  this.name = "FastImageError";
+  this.message = message;
 
-    <h4 class="name" id="FastImageStream"><span class="type-signature"></span>new FastImageStream<span class="signature">()</span><span class="type-signature"></span></h4>
+  // Copy other properties
+  Object.keys(attributes).forEach(key => {
+    this[key] = attributes[key];
+  });
+};
 
-    
+require("util").inherits(FastImageError, Error);
 
+// Exports.
+module.exports = {
+  FastImageError,
 
+  handleNetworkError(error, url){
+    "use strict";
 
-<div class="description">
-    <p>A image analysis stream.</p>
-</div>
+    let message = null;
+    let finalError = error;
 
+    switch(error.code){
+      case "ENOTFOUND":
+        message = "Invalid remote host requested.";
+        break;
+      case "ECONNRESET":
+      case "EPIPE":
+        message = "Connection with the remote host interrupted.";
+        break;
+      case "ECONNREFUSED":
+        message = "Connection refused from the remote host.";
+        break;
+      case "ETIMEDOUT":
+        message = "Connection to the remote host timed out.";
+        break;
+    }
 
+    if(message)
+      finalError = new FastImageError(message, {url, code: "NETWORK_ERROR", originalError: error});
+    else
+      finalError = new FastImageError("Unexpected response from the remote host.", {url, code: "SERVER_ERROR", httpCode: error.status});
 
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_streams.js.html">lib/streams.js</a>, <a href="lib_streams.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    return finalError;
+  }
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

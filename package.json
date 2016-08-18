@@ -16,7 +16,7 @@
     "posttest": "./node_modules/.bin/eslint main.js lib/*.js test/*.js",
     "coverage": "VCR_MODE=playback ./node_modules/.bin/istanbul --report=html cover ./node_modules/.bin/_mocha",
     "travis-ci": "VCR_MODE=playback ./node_modules/.bin/istanbul --report=lcovonly cover ./node_modules/.bin/_mocha && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "docs": "./node_modules/.bin/jsdoc -c .jsdoc.json -t ./node_modules/ink-docstrap/template -R README.md -r"
+    "docs": "./node_modules/.bin/jsdoc -c .jsdoc.json -t ./node_modules/minami -R README.md -r"
   },
   "repository": {
     "type": "git",
@@ -48,18 +48,18 @@
   "homepage": "https://sw.cowtech.it/fastimage",
   "dependencies": {
     "image-size": "~0.5.0",
-    "request": "~2.69.0"
+    "request": "~2.74.0"
   },
   "devDependencies": {
     "chai": "~3.5.0",
     "coveralls": "~2.11.8",
     "eslint": "~2.4.0",
-    "ink-docstrap": "~1.1.4",
     "istanbul": "~0.4.2",
     "jsdoc": "~3.4.0",
+    "minami": "~1.1.1",
     "mocha": "~2.4.5",
-    "sinon": "~1.17.3",
     "sepia": "^2.0.1",
-    "through": "^2.3.6"
+    "sinon": "~1.17.3",
+    "through": "~2.3.6"
   }
 }

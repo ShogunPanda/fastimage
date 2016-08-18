@@ -8,17 +8,5 @@
     "destination": "./docs/",
     "recurse": true,
     "readme": "README.md"
-  },
-  "templates": {
-    "systemName": "Fastimage",
-    "copyright": "2015 and above Shogun <shogun@cowtech.it>",
-    "includeDate": false,
-    "navType": "vertical",
-    "theme": "sandstone",
-    "linenums": true,
-    "collapseSymbols": false,
-    "inverseNav": true,
-    "syntaxTheme": "dark",
-    "sort": false
   }
 }
