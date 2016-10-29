@@ -1,3 +1,7 @@
+### 2016-10-29 / 2.0.1
+
+* Updated request package version to fix a vulnerability. Thanks to @gazay.
+
 ### 2016-03-23 / 2.0.0
 
 * **Dropped support for Node < 5.**
