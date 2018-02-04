@@ -1,9 +1,9 @@
 # fastimage
 
-[![Gem Version](https://badge.fury.io/js/fastimage.png)](http://badge.fury.io/js/fastimage)
-[![Dependency Status](https://gemnasium.com/ShogunPanda/fastimage.png?travis)](https://gemnasium.com/ShogunPanda/fastimage)
-[![Build Status](https://secure.travis-ci.org/ShogunPanda/fastimage.png?branch=master)](http://travis-ci.org/ShogunPanda/fastimage)
-[![Coverage Status](https://coveralls.io/repos/github/ShogunPanda/fastimage/badge.svg?branch=master)](https://coveralls.io/github/ShogunPanda/fastimage?branch=master)
+[![Package Version](https://img.shields.io/npm/v/fastimage.svg)](https://npmjs.com/package/fastimage)
+[![Dependency Status](https://img.shields.io/gemnasium/ShogunPanda/fastimage.svg)](https://gemnasium.com/ShogunPanda/fastimage)
+[![Build Status](https://img.shields.io/travis/ShogunPanda/fastimage.svg)](http://travis-ci.org/ShogunPanda/fastimage)
+[![Coverage Status](https://img.shields.io/coveralls/github/ShogunPanda/fastimage.svg)](https://coveralls.io/github/ShogunPanda/fastimage)
 
 
 FastImage finds the size or type of an image given its URL by fetching as little as needed.
@@ -96,4 +96,4 @@ The API documentation can be found [here](https://sw.cowtech.it/fastimage/docs).
 
 Copyright (C) 2015 and above Shogun (shogun@cowtech.it).
 
-Licensed under the MIT license, which can be found at http://opensource.org/licenses/MIT.
+Licensed under the MIT license, which can be found at https://choosealicense.com/licenses/mit.
