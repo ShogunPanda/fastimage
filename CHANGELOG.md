@@ -1,3 +1,8 @@
+### 2021-01-03 / 3.0.1
+
+- chore: Updated linter config.
+- chore: Removed IDE files.
+
 ### 2021-01-03 / 3.0.0
 
 - **Simplified to only `info` and `stream` methods.**
