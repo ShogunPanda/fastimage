@@ -113,4 +113,4 @@ The supported image type are (thanks to the [image-size](https://github.com/netr
 
 Copyright (C) 2015 and above Shogun (shogun@cowtech.it).
 
-Licensed under the MIT license, which can be found at https://choosealicense.com/licenses/mit.
+Licensed under the MIT license, which can be found at https://choosealicense.com/licenses/isc.
