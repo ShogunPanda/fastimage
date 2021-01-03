@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "description": "A module that finds the size and type of an image by fetching and reading as little data as needed.",
   "homepage": "https://sw.cowtech.it/fastimage",
-  "repository": "github:/ShogunPanda/fastimage",
+  "repository": "github:ShogunPanda/fastimage",
   "keywords": [
     "fast",
     "fastimage",
@@ -53,7 +53,7 @@
     "image-size": "^0.9.3"
   },
   "devDependencies": {
-    "@cowtech/eslint-config": "^7.12.2",
+    "@cowtech/eslint-config": "^7.14.0",
     "@types/node": "^14.14.19",
     "@types/tap": "^14.10.1",
     "prettier": "^2.2.1",

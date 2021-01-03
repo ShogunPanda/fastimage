@@ -36,6 +36,8 @@ The `options` object supports the following options:
 
 If `callback` is not provided, the method returns a `Promise`.
 
+## Example
+
 ```js
 const { info } = require('fastimage')
 
@@ -64,7 +66,7 @@ The callback argument (or the resolved value) will be an object with the followi
 }
 ```
 
-### Stream
+## Streams
 
 Calling `fastimage.stream` it will return a Writable stream which will emit the `info` event once informations are ready.
 
