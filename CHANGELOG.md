@@ -1,3 +1,7 @@
+### 2021-01-03 / 3.0.2
+
+- chore: Fixed license link in README.md.
+
 ### 2021-01-03 / 3.0.1
 
 - chore: Updated linter config.
