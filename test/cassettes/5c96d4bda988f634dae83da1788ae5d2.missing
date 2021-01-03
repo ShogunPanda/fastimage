@@ -1,8 +1,0 @@
-{
-  "url": "http://www.google.com:80/robots.txt",
-  "method": "GET",
-  "headers": {
-    "host": "www.google.com"
-  },
-  "body": ""
-}

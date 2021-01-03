@@ -1,8 +1,0 @@
-{
-  "url": "http://graph.facebook.com:80/Nodejs/picture",
-  "method": "GET",
-  "headers": {
-    "host": "graph.facebook.com"
-  },
-  "body": ""
-}

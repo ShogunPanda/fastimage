@@ -1,27 +1,9 @@
 {
   "name": "fastimage",
   "version": "2.0.1",
-  "description": "FastImage finds the size or type of an image given its URL by fetching as little as needed.",
-  "main": "main.js",
-  "files": [
-    "main.js",
-    "lib",
-    "examples",
-    "README.md",
-    "CHANGELOG.md"
-  ],
-  "scripts": {
-    "postpublish": "git push origin --tags && git push origin",
-    "test": "VCR_MODE=playback ./node_modules/.bin/mocha",
-    "posttest": "./node_modules/.bin/eslint main.js lib/*.js test/*.js",
-    "coverage": "VCR_MODE=playback ./node_modules/.bin/istanbul --report=html cover ./node_modules/.bin/_mocha",
-    "travis-ci": "VCR_MODE=playback ./node_modules/.bin/istanbul --report=lcovonly cover ./node_modules/.bin/_mocha && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "docs": "./node_modules/.bin/jsdoc -c .jsdoc.json -t ./node_modules/minami -R README.md -r"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ShogunPanda/fastimage"
-  },
+  "description": "A module that finds the size and type of an image by fetching and reading as little data as needed.",
+  "homepage": "https://sw.cowtech.it/fastimage",
+  "repository": "github:/ShogunPanda/fastimage",
   "keywords": [
     "fast",
     "fastimage",
@@ -40,26 +22,45 @@
     "webp",
     "svg"
   ],
-  "author": "Shogun <shogun@cowtech.it>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ShogunPanda/fastimage/issues"
   },
-  "homepage": "https://sw.cowtech.it/fastimage",
+  "author": "Shogun <shogun@cowtech.it>",
+  "license": "ISC",
+  "private": false,
+  "files": [
+    "lib",
+    "types",
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "main": "lib/index.js",
+  "typings": "types/index.d.ts",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "lint": "eslint src/*.ts test/*.ts",
+    "test": "tap --reporter=spec --coverage-report=html --coverage-report=text --no-browser test/*.test.ts",
+    "test:ci": "tap --no-color --reporter=spec --coverage-report=json --coverage-report=text --branches 90 --functions 90 --lines 90 --statements 90 test/*.test.ts",
+    "ci": "yarn lint && yarn test:ci",
+    "prebuild": "rm -rf lib/* types/* && yarn lint",
+    "build": "tsc -p .",
+    "prepublishOnly": "yarn ci",
+    "postpublish": "git push origin && git push origin -f --tags"
+  },
   "dependencies": {
-    "image-size": "~0.5.0",
-    "request": "~2.74.0"
+    "got": "^11.8.1",
+    "image-size": "^0.9.3"
   },
   "devDependencies": {
-    "chai": "~3.5.0",
-    "coveralls": "~2.11.8",
-    "eslint": "~2.4.0",
-    "istanbul": "~0.4.2",
-    "jsdoc": "~3.4.0",
-    "minami": "~1.1.1",
-    "mocha": "~2.4.5",
-    "sepia": "^2.0.1",
-    "sinon": "~1.17.3",
-    "through": "~2.3.6"
+    "@cowtech/eslint-config": "^7.12.2",
+    "@types/node": "^14.14.19",
+    "@types/tap": "^14.10.1",
+    "prettier": "^2.2.1",
+    "tap": "^14.11.0",
+    "typescript": "^4.1.3"
+  },
+  "engines": {
+    "node": ">=12.15.0"
   }
 }
