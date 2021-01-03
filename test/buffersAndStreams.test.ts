@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { createReadStream } from 'fs'
-import { readFile } from 'fs/promises'
+import { createReadStream, readFileSync } from 'fs'
 import { resolve } from 'path'
 import t from 'tap'
 import { info } from '../src'
@@ -12,7 +11,7 @@ type Test = typeof t
 t.test('fastimage.info', (t: Test) => {
   t.test('when working with buffers', (t: Test) => {
     t.test('should return the information of a image', async (t: Test) => {
-      const buffer = await readFile(resolve(__dirname, 'fixtures/image.png'))
+      const buffer = readFileSync(resolve(__dirname, 'fixtures/image.png'))
 
       const data = await info(buffer)
 
@@ -26,7 +25,7 @@ t.test('fastimage.info', (t: Test) => {
     })
 
     t.test('should return a error when the data is not a image', async (t: Test) => {
-      const buffer = await readFile(resolve(__filename))
+      const buffer = readFileSync(resolve(__filename))
 
       await t.rejects(info(buffer), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
     })
