@@ -111,7 +111,6 @@ t.test('fastimage.info', (t: Test) => {
 
       server.close()
 
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
       t.same(agents, [`fastimage/${userAgentVersion}`, 'FOO'])
     })
 
