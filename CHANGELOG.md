@@ -1,3 +1,7 @@
+### 2021-01-04 / 3.2.0
+
+- feat: Use different versioning for User-Agent.
+
 ### 2021-01-04 / 3.1.0
 
 - feat: Export as ESM.
