@@ -1,5 +1,4 @@
 // The version is dynamically generated via build script in order not rely on require in the ESM case.
-import { version } from './version'
 
 export interface ImageInfo {
   width: number
@@ -30,8 +29,11 @@ export class FastImageError extends Error {
   }
 }
 
+// Since it's harder to keep this in sync with package.json, let's use a different number.
+export const userAgentVersion = '1.0.0'
+
 export const defaultOptions: Options = {
   timeout: 30000,
   threshold: 4096,
-  userAgent: `fastimage/${version}`
+  userAgent: `fastimage/${userAgentVersion}`
 }

@@ -18,4 +18,5 @@ export declare class FastImageError extends Error {
     httpResponseCode?: number;
     constructor(message: string, code: string, url?: string, httpResponseCode?: number);
 }
+export declare const userAgentVersion = "1.0.0";
 export declare const defaultOptions: Options;

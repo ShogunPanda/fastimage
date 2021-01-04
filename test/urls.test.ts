@@ -6,7 +6,7 @@ import { AddressInfo, createServer, Socket } from 'net'
 import { resolve } from 'path'
 import t from 'tap'
 import { info } from '../src'
-import { FastImageError } from '../src/models'
+import { FastImageError, userAgentVersion } from '../src/models'
 
 type Test = typeof t
 
@@ -112,7 +112,7 @@ t.test('fastimage.info', (t: Test) => {
       server.close()
 
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      t.same(agents, [`fastimage/${require('../package.json').version}`, 'FOO'])
+      t.same(agents, [`fastimage/${userAgentVersion}`, 'FOO'])
     })
 
     t.end()
