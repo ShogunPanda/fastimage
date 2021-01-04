@@ -1,3 +1,7 @@
+### 2021-01-04 / 3.1.0
+
+- feat: Export as ESM.
+
 ### 2021-01-03 / 3.0.2
 
 - chore: Fixed license link in README.md.
