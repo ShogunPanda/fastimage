@@ -1,6 +1,6 @@
 {
   "name": "fastimage",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "A module that finds the size and type of an image by fetching and reading as little data as needed.",
   "homepage": "https://sw.cowtech.it/fastimage",
   "repository": "github:ShogunPanda/fastimage",
