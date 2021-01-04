@@ -4,7 +4,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "preserve",
-    "outDir": "lib",
+    "outDir": "dist/cjs",
     "declarationDir": "types",
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
