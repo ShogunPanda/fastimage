@@ -3,7 +3,6 @@
 import { readFileSync } from 'fs'
 import { createServer as createHttpServer, IncomingMessage, ServerResponse } from 'http'
 import { AddressInfo, createServer, Socket } from 'net'
-import { resolve } from 'path'
 import t from 'tap'
 import { info } from '../src'
 import { FastImageError, userAgentVersion } from '../src/models'
@@ -22,10 +21,10 @@ t.test('fastimage.info', (t: Test) => {
         time: data.time,
         analyzed: data.analyzed,
         realUrl: 'https://fakeimg.pl/1000x1000/',
-        size: 17300
+        size: 17308
       })
 
-      t.true(data.analyzed < data.size!)
+      t.ok(data.analyzed < data.size!)
     })
 
     t.test('should return a error when the host cannot be found', async (t: Test) => {
@@ -99,7 +98,7 @@ t.test('fastimage.info', (t: Test) => {
 
       const server = createHttpServer((r: IncomingMessage, s: ServerResponse) => {
         agents.push(r.headers['user-agent']!)
-        s.end(readFileSync(resolve(__dirname, 'fixtures/image.png')))
+        s.end(readFileSync(new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')))
       })
 
       server.listen(0)

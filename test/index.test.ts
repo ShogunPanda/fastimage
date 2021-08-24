@@ -32,7 +32,7 @@ t.test('fastimage.info', (t: Test) => {
       size: 554617
     })
 
-    t.true(data.analyzed < data.size!)
+    t.ok(data.analyzed < data.size!)
   })
 
   t.end()

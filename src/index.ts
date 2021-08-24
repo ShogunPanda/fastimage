@@ -1,11 +1,11 @@
-import { HTTPError, Response } from 'got'
+import EventEmitter from 'events'
 import { Stream, Writable, WritableOptions } from 'stream'
 import { Callback, ensurePromiseCallback } from './callback'
 import { handleData, handleError, toStream } from './internals'
 import { defaultOptions, FastImageError, ImageInfo, Options } from './models'
 import { FastImageStream } from './stream'
 
-export function info(
+export async function info(
   source: string | Stream | Buffer,
   options?: Partial<Options> | Callback,
   cb?: Callback
@@ -20,49 +20,42 @@ export function info(
 
   // Prepare execution
   let finished = false
-  let response: Response
   let buffer = Buffer.alloc(0)
   const [callback, promise] = ensurePromiseCallback(cb)
   const start = process.hrtime.bigint()
 
   // Make sure the source is always a Stream
-  let stream: Stream
-  let url: string | undefined
   try {
-    ;[stream, url] = toStream(source, timeout, threshold, userAgent)
+    const aborter = new EventEmitter()
+    const [stream, url, headers] = await toStream(source, timeout, threshold, userAgent, aborter)
+
+    stream.on('data', (chunk: Buffer) => {
+      if (finished) {
+        return
+      }
+
+      buffer = Buffer.concat([buffer, chunk])
+      finished = handleData(buffer, headers, threshold, start, aborter, callback)
+    })
+
+    stream.on('error', (error: FastImageError) => {
+      callback(handleError(error, url!))
+    })
+
+    stream.on('end', () => {
+      if (finished) {
+        return
+      }
+
+      // We have reached the end without figuring the image type. Just give up
+      callback(new FastImageError('Unsupported data.', 'UNSUPPORTED'))
+    })
+
+    return promise!
   } catch (e) {
     callback(e)
     return promise!
   }
-
-  // When dealing with URLs, save the response to extract data later
-  stream!.on('response', (r: Response) => {
-    response = r
-  })
-
-  stream!.on('data', (chunk: Buffer) => {
-    if (finished) {
-      return
-    }
-
-    buffer = Buffer.concat([buffer, chunk])
-    finished = handleData(buffer, response, threshold, start, callback)
-  })
-
-  stream!.on('error', (error: FastImageError | HTTPError) => {
-    callback(handleError(error, url!))
-  })
-
-  stream!.on('end', () => {
-    if (finished) {
-      return
-    }
-
-    // We have reached the end without figuring the image type. Just give up
-    callback(new FastImageError('Unsupported data.', 'UNSUPPORTED'))
-  })
-
-  return promise!
 }
 
 export function stream(options?: Partial<Options> & Partial<WritableOptions>): Writable {

@@ -10,7 +10,7 @@ jobs:
       - name: Use Node.js LTS
         uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: lts/*
       - name: Restore cached dependencies
         uses: actions/cache@v2
         with:

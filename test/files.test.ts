@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import { chmodSync, unlinkSync, writeFileSync } from 'fs'
-import { resolve } from 'path'
+import { dirname } from 'path'
 import t from 'tap'
 import { info } from '../src'
 import { FastImageError, ImageInfo } from '../src/models'
 
 type Test = typeof t
 
+const fileName = import.meta.url.replace('file://', '')
+const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')
+
 t.test('fastimage.info', (t: Test) => {
   t.test('when working with local files', (t: Test) => {
     t.test('should return the information of a image', (t: Test) => {
-      info(resolve(__dirname, 'fixtures/image.png'), (error: Error | null, data?: ImageInfo) => {
+      info(imagePath, (error: Error | null, data?: ImageInfo) => {
         t.error(error)
 
         t.same(data, {
@@ -27,7 +30,7 @@ t.test('fastimage.info', (t: Test) => {
     })
 
     t.test('should return a error when the path is a directory', (t: Test) => {
-      info(__dirname, (error: Error | null, data?: ImageInfo) => {
+      info(dirname(fileName), (error: Error | null, data?: ImageInfo) => {
         t.error(data)
         t.strictSame(error, new FastImageError('Source is a directory.', 'FS_ERROR'))
         t.end()
@@ -43,7 +46,7 @@ t.test('fastimage.info', (t: Test) => {
     })
 
     t.test('should return a error when the path cannot be read', (t: Test) => {
-      const unreadablePath = resolve(__dirname, './fixtures/unreadable.png')
+      const unreadablePath = imagePath.replace('image.png', 'unreadable.png')
       writeFileSync(unreadablePath, 'foo', 'utf-8')
       chmodSync(unreadablePath, 0)
 
@@ -57,7 +60,7 @@ t.test('fastimage.info', (t: Test) => {
     })
 
     t.test('should return a error when the path is not a image', (t: Test) => {
-      info(__filename, (error: Error | null, data?: ImageInfo) => {
+      info(fileName, (error: Error | null, data?: ImageInfo) => {
         t.error(data)
         t.strictSame(error, new FastImageError('Unsupported data.', 'UNSUPPORTED'))
         t.end()

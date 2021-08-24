@@ -39,7 +39,7 @@ If `callback` is not provided, the method returns a `Promise`.
 ## Example
 
 ```js
-const { info } = require('fastimage')
+import { info } from 'fastimage'
 
 info('http://fakeimg.pl/1000x1000/', (error, data) => {
   if (error) {
@@ -49,7 +49,7 @@ info('http://fakeimg.pl/1000x1000/', (error, data) => {
   }
 })
 
-const data = await fastimage('http://fakeimg.pl/1000x1000/')
+const data = await info('http://fakeimg.pl/1000x1000/')
 ```
 
 The callback argument (or the resolved value) will be an object with the following properties:
@@ -73,7 +73,8 @@ Calling `fastimage.stream` it will return a Writable stream which will emit the 
 The stream accepts only the `threshold` option.
 
 ```js
-const { info } = require('fastimage')
+import { stream } from 'fastimage'
+
 const pipe = createReadStream('/path/to/image.png').pipe(stream({ threshold: 100 }))
 
 pipe.on('info', data => {

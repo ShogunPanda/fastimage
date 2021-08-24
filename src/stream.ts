@@ -1,3 +1,4 @@
+import EventEmitter from 'events'
 import { Writable, WritableOptions } from 'stream'
 import { handleData } from './internals'
 import { defaultOptions, FastImageError, ImageInfo, Options } from './models'
@@ -25,6 +26,7 @@ export class FastImageStream extends Writable {
       undefined,
       this.threshold,
       this.start,
+      new EventEmitter(),
       (error: Error | null, data?: ImageInfo) => {
         if (error) {
           this.emit('error', error)
@@ -42,7 +44,7 @@ export class FastImageStream extends Writable {
     cb()
   }
 
-  /* istanbul ignore next */
+  /* c8 ignore start  */
   _writev(chunks: Array<{ chunk: any }>, cb: (error?: Error | null) => void): void {
     for (const { chunk } of chunks) {
       this.analyze(chunk)
@@ -50,9 +52,10 @@ export class FastImageStream extends Writable {
 
     cb()
   }
+  /* c8 ignore stop  */
 
   _final(cb: (error?: Error | null) => void): void {
-    /* istanbul ignore if */
+    /* c8 ignore next 4 */
     if (this.finished) {
       cb()
       return

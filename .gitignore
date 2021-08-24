@@ -1,12 +1,3 @@
-package-lock.json
-yarn.lock
-
-.nyc_output
+dist/
+types/
 coverage/
-node_modules/
-tmp/
-
-npm-debug.log
-npm-error.log
-yarn-debug.log
-yarn-error.log
