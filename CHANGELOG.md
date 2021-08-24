@@ -1,3 +1,9 @@
+### 2021-08-24 / 4.0.0
+
+- feat: Only export as ESM.
+- fix: Removed useless comment.
+- chore: Fine tuned build script.
+
 ### 2021-01-04 / 3.2.0
 
 - feat: Use different versioning for User-Agent.
