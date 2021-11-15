@@ -1,9 +1,9 @@
 # fastimage
 
-[![Package Version](https://img.shields.io/npm/v/fastimage.svg)](https://npm.im/fastimage)
-[![Dependency Status](https://img.shields.io/david/ShogunPanda/fastimage)](https://david-dm.org/ShogunPanda/fastimage)
+[![Version](https://img.shields.io/npm/v/fastimage.svg)](https://npm.im/fastimage)
+[![Dependencies](https://img.shields.io/librariesio/release/npm/fastimage)](https://libraries.io/npm/fastimage)
 [![Build](https://github.com/ShogunPanda/fastimage/workflows/CI/badge.svg)](https://github.com/ShogunPanda/fastimage/actions?query=workflow%3ACI)
-[![Code Coverage](https://img.shields.io/codecov/c/gh/ShogunPanda/fastimage?token=KMA8EPI3DI)](https://codecov.io/gh/ShogunPanda/fastimage)
+[![Coverage](https://img.shields.io/codecov/c/gh/ShogunPanda/fastimage?token=KMA8EPI3DI)](https://codecov.io/gh/ShogunPanda/fastimage)
 
 A module that finds the size and type of an image by fetching and reading as little data as needed.
 
