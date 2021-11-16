@@ -1,3 +1,10 @@
+### 2021-11-16 / 4.0.1
+
+- fix: Added ESM note in the README.md
+- chore: Allow manual CI triggering.
+- chore: Updated badges.
+- fix: Fixed Typescript configuration.
+
 ### 2021-08-24 / 4.0.0
 
 - feat: Only export as ESM.
