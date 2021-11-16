@@ -36,10 +36,9 @@
     "README.md"
   ],
   "type": "module",
-  "main": "./dist/index.js",
   "exports": "./dist/index.js",
-  "typings": "types/index.d.ts",
-  "types": "types/index.d.ts",
+  "typings": "./types/index.d.ts",
+  "types": "./types/index.d.ts",
   "scripts": {
     "prebuild": "rm -rf dist types && npm run lint",
     "build": "tsc -p . && esm-pkg-add-imports-extensions dist",
