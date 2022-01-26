@@ -5,14 +5,12 @@ import t from 'tap'
 import { info } from '../src'
 import { FastImageError } from '../src/models'
 
-type Test = typeof t
-
 const fileName = import.meta.url.replace('file://', '')
 const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')
 
-t.test('fastimage.info', (t: Test) => {
-  t.test('when working with buffers', (t: Test) => {
-    t.test('should return the information of a image', async (t: Test) => {
+t.test('fastimage.info', t => {
+  t.test('when working with buffers', t => {
+    t.test('should return the information of a image', async t => {
       const buffer = readFileSync(imagePath)
 
       const data = await info(buffer)
@@ -26,7 +24,7 @@ t.test('fastimage.info', (t: Test) => {
       })
     })
 
-    t.test('should return a error when the data is not a image', async (t: Test) => {
+    t.test('should return a error when the data is not a image', async t => {
       const buffer = readFileSync(fileName)
 
       await t.rejects(info(buffer), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
@@ -35,8 +33,8 @@ t.test('fastimage.info', (t: Test) => {
     t.end()
   })
 
-  t.test('when working with streams', (t: Test) => {
-    t.test('should return the information of a image', async (t: Test) => {
+  t.test('when working with streams', t => {
+    t.test('should return the information of a image', async t => {
       const data = await info(createReadStream(imagePath))
 
       t.same(data, {
@@ -48,7 +46,7 @@ t.test('fastimage.info', (t: Test) => {
       })
     })
 
-    t.test('should return a error when the data is not a image', async (t: Test) => {
+    t.test('should return a error when the data is not a image', async t => {
       await t.rejects(info(fileName), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
     })
 

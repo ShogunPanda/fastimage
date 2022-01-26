@@ -1,7 +1,7 @@
 import EventEmitter from 'events'
 import { Writable, WritableOptions } from 'stream'
 import { handleData } from './internals'
-import { defaultOptions, FastImageError, ImageInfo, Options } from './models'
+import { defaultOptions, FastImageError, Options } from './models'
 
 export class FastImageStream extends Writable {
   buffer: Buffer
@@ -27,7 +27,7 @@ export class FastImageStream extends Writable {
       this.threshold,
       this.start,
       new EventEmitter(),
-      (error: Error | null, data?: ImageInfo) => {
+      (error, data) => {
         if (error) {
           this.emit('error', error)
         } else {

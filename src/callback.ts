@@ -11,13 +11,13 @@ export function ensurePromiseCallback(callback?: Callback): [Callback, Promise<I
 
   let promiseResolve: PromiseResolver<ImageInfo>, promiseReject: PromiseRejecter
 
-  const promise = new Promise((resolve: PromiseResolver<ImageInfo>, reject: PromiseRejecter) => {
+  const promise = new Promise<ImageInfo>((resolve, reject) => {
     promiseResolve = resolve
     promiseReject = reject
   })
 
   return [
-    (err: Error | null, info?: ImageInfo) => {
+    (err, info) => {
       if (err) {
         return promiseReject(err)
       }

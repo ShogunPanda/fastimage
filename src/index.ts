@@ -29,7 +29,7 @@ export async function info(
     const aborter = new EventEmitter()
     const [stream, url, headers] = await toStream(source, timeout, threshold, userAgent, aborter)
 
-    stream.on('data', (chunk: Buffer) => {
+    stream.on('data', chunk => {
       if (finished) {
         return
       }
@@ -38,7 +38,7 @@ export async function info(
       finished = handleData(buffer, headers, threshold, start, aborter, callback)
     })
 
-    stream.on('error', (error: FastImageError) => {
+    stream.on('error', error => {
       callback(handleError(error, url!))
     })
 

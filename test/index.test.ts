@@ -4,10 +4,8 @@ import t from 'tap'
 import { info } from '../src'
 import { FastImageError } from '../src/models'
 
-type Test = typeof t
-
-t.test('fastimage.info', (t: Test) => {
-  t.test('side cases', async (t: Test) => {
+t.test('fastimage.info', t => {
+  t.test('side cases', async t => {
     // This is a file which is corrupted. To correctly recognize the threshold must be disabled.
     await t.rejects(
       info(

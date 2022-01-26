@@ -1,17 +1,15 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import { readFileSync } from 'fs'
-import { createServer as createHttpServer, IncomingMessage, ServerResponse } from 'http'
-import { AddressInfo, createServer, Socket } from 'net'
+import { createServer as createHttpServer } from 'http'
+import { AddressInfo, createServer } from 'net'
 import t from 'tap'
 import { info } from '../src'
 import { FastImageError, userAgentVersion } from '../src/models'
 
-type Test = typeof t
-
-t.test('fastimage.info', (t: Test) => {
-  t.test('when working with URLS', (t: Test) => {
-    t.test('should return the information of a image', async (t: Test) => {
+t.test('fastimage.info', t => {
+  t.test('when working with URLS', t => {
+    t.test('should return the information of a image', async t => {
       const data = await info('http://fakeimg.pl/1000x1000/')
 
       t.same(data, {
@@ -27,39 +25,39 @@ t.test('fastimage.info', (t: Test) => {
       t.ok(data.analyzed < data.size!)
     })
 
-    t.test('should return a error when the host cannot be found', async (t: Test) => {
+    t.test('should return a error when the host cannot be found', async t => {
       await t.rejects(
         info('https://fakeimg-no.pl/1000x1000/'),
         new FastImageError('Invalid remote host requested.', 'NETWORK_ERROR', 'https://fakeimg-no.pl/1000x1000/')
       )
     })
 
-    t.test('should return a error when the URL cannot be found', async (t: Test) => {
+    t.test('should return a error when the URL cannot be found', async t => {
       await t.rejects(
         info('https://fakeimg.pl/invalid'),
         new FastImageError('Remote host replied with HTTP 404', 'NETWORK_ERROR', 'https://fakeimg.pl/invalid')
       )
     })
 
-    t.test('should return a error when the URL is not a image', async (t: Test) => {
+    t.test('should return a error when the URL is not a image', async t => {
       await t.rejects(info('https://www.google.com/robots.txt'), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
     })
 
-    t.test('should return a error when the URL is not a image when downloading the entire file', async (t: Test) => {
+    t.test('should return a error when the URL is not a image when downloading the entire file', async t => {
       await t.rejects(
         info('https://www.google.com/robots.txt', { threshold: 0 }),
         new FastImageError('Unsupported data.', 'UNSUPPORTED')
       )
     })
 
-    t.test('should handle connection timeouts', async (t: Test) => {
+    t.test('should handle connection timeouts', async t => {
       await t.rejects(
         info('https://fakeimg.pl/1000x1000/', { timeout: 10 }),
         new FastImageError('Connection to the remote host timed out.', 'NETWORK_ERROR', 'https://fakeimg.pl/1000x1000/')
       )
     })
 
-    t.test('should handle connection failures', async (t: Test) => {
+    t.test('should handle connection failures', async t => {
       await t.rejects(
         info('http://127.0.0.1:65000/100x100'),
         new FastImageError(
@@ -70,8 +68,8 @@ t.test('fastimage.info', (t: Test) => {
       )
     })
 
-    t.test('should handle connection interruptions', async (t: Test) => {
-      const server = createServer((c: Socket) => {
+    t.test('should handle connection interruptions', async t => {
+      const server = createServer(c => {
         c.end()
       })
 
@@ -86,17 +84,17 @@ t.test('fastimage.info', (t: Test) => {
       server.close()
     })
 
-    t.test('should complain about invalid URLs.', async (t: Test) => {
+    t.test('should complain about invalid URLs.', async t => {
       await t.rejects(
         info('ftp://127.0.0.1:65000/100x100'),
         new FastImageError('Invalid URL.', 'URL_ERROR', 'ftp://127.0.0.1:65000/100x100')
       )
     })
 
-    t.test('should send the right user agent', async (t: Test) => {
+    t.test('should send the right user agent', async t => {
       const agents: Array<string> = []
 
-      const server = createHttpServer((r: IncomingMessage, s: ServerResponse) => {
+      const server = createHttpServer((r, s) => {
         agents.push(r.headers['user-agent']!)
         s.end(readFileSync(new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')))
       })
