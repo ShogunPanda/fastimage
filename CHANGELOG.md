@@ -1,3 +1,7 @@
+### 2022-03-07 / 4.0.4
+
+- chore: Updated dependencies.
+
 ### 2022-01-26 / 4.0.3
 
 - chore: Updated dependencies and linted code.
