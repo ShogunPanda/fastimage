@@ -45,7 +45,7 @@ t.test('fastimage.info', t => {
 
     t.test('should return a error when the path cannot be read', t => {
       const unreadablePath = imagePath.replace('image.png', 'unreadable.png')
-      writeFileSync(unreadablePath, 'foo', 'utf-8')
+      writeFileSync(unreadablePath, 'foo', 'utf8')
       chmodSync(unreadablePath, 0)
 
       info(unreadablePath, (error, data) => {

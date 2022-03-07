@@ -14,12 +14,15 @@ jobs:
       - name: Restore cached dependencies
         uses: actions/cache@v2
         with:
-          path: node_modules
+          path: ~/.pnpm-store
           key: node-modules-${{ hashFiles('package.json') }}
       - name: Install dependencies
-        run: npm install
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: true
       - name: Run Tests
-        run: npm run ci
+        run: pnpm run ci
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
