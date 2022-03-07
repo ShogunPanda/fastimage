@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import t from 'tap'
-import { info } from '../src'
-import { FastImageError } from '../src/models'
+import { info } from '../src/index.js'
+import { FastImageError } from '../src/models.js'
 
 t.test('fastimage.info', t => {
   t.test('side cases', async t => {
@@ -27,7 +27,7 @@ t.test('fastimage.info', t => {
       analyzed: data.analyzed,
       realUrl:
         'https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg',
-      size: 554617
+      size: 554_617
     })
 
     t.ok(data.analyzed < data.size!)

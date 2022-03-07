@@ -1,7 +1,7 @@
-import EventEmitter from 'events'
-import { Writable, WritableOptions } from 'stream'
-import { handleData } from './internals'
-import { defaultOptions, FastImageError, Options } from './models'
+import EventEmitter from 'node:events'
+import { Writable, WritableOptions } from 'node:stream'
+import { handleData } from './internals.js'
+import { defaultOptions, FastImageError, Options } from './models.js'
 
 export class FastImageStream extends Writable {
   buffer: Buffer

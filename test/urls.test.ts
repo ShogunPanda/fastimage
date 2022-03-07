@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { readFileSync } from 'fs'
-import { createServer as createHttpServer } from 'http'
-import { AddressInfo, createServer } from 'net'
+import { readFileSync } from 'node:fs'
+import { createServer as createHttpServer } from 'node:http'
+import { AddressInfo, createServer } from 'node:net'
 import t from 'tap'
-import { info } from '../src'
-import { FastImageError, userAgentVersion } from '../src/models'
+import { info } from '../src/index.js'
+import { FastImageError, userAgentVersion } from '../src/models.js'
 
 t.test('fastimage.info', t => {
   t.test('when working with URLS', t => {
@@ -19,7 +19,7 @@ t.test('fastimage.info', t => {
         time: data.time,
         analyzed: data.analyzed,
         realUrl: 'https://fakeimg.pl/1000x1000/',
-        size: 17308
+        size: 17_308
       })
 
       t.ok(data.analyzed < data.size!)

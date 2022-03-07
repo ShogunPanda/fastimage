@@ -40,30 +40,34 @@
   "typings": "./types/index.d.ts",
   "types": "./types/index.d.ts",
   "scripts": {
-    "prebuild": "rm -rf dist types && npm run lint",
-    "build": "tsc -p . && esm-pkg-add-imports-extensions dist",
+    "dev": "swc -w -d dist src",
+    "prebuild": "rm -rf dist types && npm run typecheck && npm run lint",
+    "build": "swc --delete-dir-on-start -d dist src",
     "format": "prettier -w src test",
+    "typecheck": "tsc -p . --emitDeclarationOnly",
     "lint": "eslint src test",
-    "test": "c8 --reporter=text --reporter=html esm-ts-tap --reporter=spec --no-coverage test/*.test.ts",
-    "test:ci": "c8 --reporter=text --reporter=json --check-coverage --branches 90 --functions 90 --lines 90 --statements 90 esm-ts-tap --no-color --no-coverage test/*.test.ts",
-    "ci": "npm run lint && npm run test:ci",
+    "test": "c8 -c test/config/c8-local.json tap --rcfile=test/config/tap.yml test/*.test.ts",
+    "test:ci": "c8 -c test/config/c8-ci.json tap --rcfile=test/config/tap.yml --no-color test/*.test.ts",
+    "ci": "npm run build && npm run test:ci",
     "prepublishOnly": "npm run ci",
     "postpublish": "git push origin && git push origin -f --tags"
   },
   "dependencies": {
-    "image-size": "^1.0.0",
-    "undici": "^4.4.7"
+    "image-size": "^1.0.1",
+    "undici": "^4.15.0"
   },
   "devDependencies": {
-    "@cowtech/eslint-config": "^8.0.1",
-    "@cowtech/esm-package-utils": "^0.9.3",
-    "@types/node": "^17.0.2",
-    "@types/tap": "^15.0.5",
-    "c8": "^7.8.0",
-    "prettier": "^2.3.2",
-    "tap": "^15.0.9",
-    "ts-node": "^10.2.0",
-    "typescript": "^4.2.4"
+    "@cowtech/eslint-config": "^8.4.0",
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.150",
+    "@types/node": "^17.0.21",
+    "@types/tap": "^15.0.6",
+    "c8": "^7.11.0",
+    "chokidar": "^3.5.3",
+    "prettier": "^2.5.1",
+    "tap": "^15.2.3",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
   },
   "engines": {
     "node": ">=14.15.0"

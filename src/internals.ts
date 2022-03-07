@@ -1,11 +1,11 @@
-import EventEmitter from 'events'
-import { createReadStream } from 'fs'
-import { IncomingHttpHeaders } from 'http'
 import imageSize from 'image-size'
-import { Readable, Stream } from 'stream'
+import EventEmitter from 'node:events'
+import { createReadStream } from 'node:fs'
+import { IncomingHttpHeaders } from 'node:http'
+import { Readable, Stream } from 'node:stream'
 import undici from 'undici'
-import { Callback } from './callback'
-import { FastImageError, ImageInfo } from './models'
+import { Callback } from './callback.js'
+import { FastImageError, ImageInfo } from './models.js'
 
 const realUrlHeader = 'x-fastimage-real-url'
 
@@ -58,11 +58,11 @@ export async function toStream(
       source = body
       headers = responseHeaders
       headers[realUrlHeader] = (context as any).history.pop().toString()
-    } catch (e) {
-      if ((e as FastImageError).code === 'FASTIMAGE_URL_ERROR') {
-        throw e
+    } catch (error) {
+      if ((error as FastImageError).code === 'FASTIMAGE_URL_ERROR') {
+        throw error
       } else if (url) {
-        throw handleError(e, url)
+        throw handleError(error, url)
       }
 
       // Parsing failed. Treat as local file
@@ -97,7 +97,7 @@ export function handleData(
       data.realUrl = headers[realUrlHeader] as string
 
       if ('content-length' in headers) {
-        data.size = parseInt(headers['content-length']!, 10)
+        data.size = Number.parseInt(headers['content-length']!, 10)
       }
     }
 
@@ -106,7 +106,7 @@ export function handleData(
 
     callback(null, data)
     return true
-  } catch (e) {
+  } catch {
     // Check threshold
     if (threshold > 0 && buffer.length > threshold) {
       aborter.emit('abort')

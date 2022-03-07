@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { chmodSync, unlinkSync, writeFileSync } from 'fs'
-import { dirname } from 'path'
+import { chmodSync, unlinkSync, writeFileSync } from 'node:fs'
+import { dirname } from 'node:path'
 import t from 'tap'
-import { info } from '../src'
-import { FastImageError } from '../src/models'
+import { info } from '../src/index.js'
+import { FastImageError } from '../src/models.js'
 
 const fileName = import.meta.url.replace('file://', '')
 const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')

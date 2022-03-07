@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { createReadStream, readFileSync } from 'fs'
+import { createReadStream, readFileSync } from 'node:fs'
 import t from 'tap'
-import { info } from '../src'
-import { FastImageError } from '../src/models'
+import { info } from '../src/index.js'
+import { FastImageError } from '../src/models.js'
 
 const fileName = import.meta.url.replace('file://', '')
 const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')
@@ -20,7 +20,7 @@ t.test('fastimage.info', t => {
         height: 150,
         type: 'png',
         time: data.time,
-        analyzed: 24090
+        analyzed: 24_090
       })
     })
 
@@ -42,7 +42,7 @@ t.test('fastimage.info', t => {
         height: 150,
         type: 'png',
         time: data.time,
-        analyzed: 24090
+        analyzed: 24_090
       })
     })
 

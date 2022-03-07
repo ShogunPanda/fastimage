@@ -1,9 +1,9 @@
-import EventEmitter from 'events'
-import { Stream, Writable, WritableOptions } from 'stream'
-import { Callback, ensurePromiseCallback } from './callback'
-import { handleData, handleError, toStream } from './internals'
-import { defaultOptions, FastImageError, ImageInfo, Options } from './models'
-import { FastImageStream } from './stream'
+import EventEmitter from 'node:events'
+import { Stream, Writable, WritableOptions } from 'node:stream'
+import { Callback, ensurePromiseCallback } from './callback.js'
+import { handleData, handleError, toStream } from './internals.js'
+import { defaultOptions, FastImageError, ImageInfo, Options } from './models.js'
+import { FastImageStream } from './stream.js'
 
 export async function info(
   source: string | Stream | Buffer,
@@ -52,8 +52,8 @@ export async function info(
     })
 
     return promise!
-  } catch (e) {
-    callback(e)
+  } catch (error) {
+    callback(error)
     return promise!
   }
 }

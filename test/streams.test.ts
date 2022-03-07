@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { createReadStream } from 'fs'
+import { createReadStream } from 'node:fs'
 import t from 'tap'
-import { stream } from '../src'
-import { FastImageError } from '../src/models'
+import { stream } from '../src/index.js'
+import { FastImageError } from '../src/models.js'
 
 const fileName = import.meta.url.replace('file://', '')
 const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')

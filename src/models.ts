@@ -23,6 +23,7 @@ export class FastImageError extends Error {
 
   constructor(message: string, code: string, url?: string, httpResponseCode?: number) {
     super(message)
+    this.name = 'FastImageError'
     this.code = `FASTIMAGE_${code}`
     this.url = url
     this.httpResponseCode = httpResponseCode
@@ -33,7 +34,7 @@ export class FastImageError extends Error {
 export const userAgentVersion = '1.0.0'
 
 export const defaultOptions: Options = {
-  timeout: 30000,
+  timeout: 30_000,
   threshold: 4096,
   userAgent: `fastimage/${userAgentVersion}`
 }
