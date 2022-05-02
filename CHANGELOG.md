@@ -1,3 +1,7 @@
+### 2022-05-02 / 4.0.8
+
+- fix: Correctly Export models.
+
 ### 2022-05-02 / 4.0.7
 
 - fix: Export models.
