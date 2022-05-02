@@ -5,6 +5,8 @@ import { handleData, handleError, toStream } from './internals.js'
 import { defaultOptions, FastImageError, ImageInfo, Options } from './models.js'
 import { FastImageStream } from './stream.js'
 
+export * from './models.js'
+
 export async function info(
   source: string | Stream | Buffer,
   options?: Partial<Options> | Callback,
