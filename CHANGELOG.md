@@ -1,3 +1,8 @@
+### 2022-05-02 / 4.0.6
+
+- fix: Export models.
+- chore: Use sourcemaps with swc
+
 ### 2022-03-07 / 4.0.5
 
 - chore: Updated dependencies.
