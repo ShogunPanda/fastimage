@@ -1,3 +1,8 @@
+### 2022-08-29 / 4.0.9
+
+- chore: Updated dependencies.
+- fix: Fixed CI.
+
 ### 2022-05-02 / 4.0.8
 
 - fix: Correctly Export models.
