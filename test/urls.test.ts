@@ -73,7 +73,7 @@ t.test('fastimage.info', t => {
         c.end()
       })
 
-      server.listen(0)
+      server.listen({ port: 0 })
 
       const url = `http://127.0.0.1:${(server.address() as AddressInfo).port}`
       await t.rejects(
@@ -99,7 +99,7 @@ t.test('fastimage.info', t => {
         s.end(readFileSync(new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')))
       })
 
-      server.listen(0)
+      server.listen({ port: 0 })
 
       const url = `http://127.0.0.1:${(server.address() as AddressInfo).port}`
 
