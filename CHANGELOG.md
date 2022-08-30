@@ -1,3 +1,8 @@
+### 2022-08-30 / 4.0.10
+
+- chore: Updated dependencies.
+- chore: Remove variadic method.
+
 ### 2022-08-29 / 4.0.9
 
 - chore: Updated dependencies.
