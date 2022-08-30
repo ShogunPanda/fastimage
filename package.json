@@ -57,10 +57,10 @@
     "undici": "^5.10.0"
   },
   "devDependencies": {
-    "@cowtech/eslint-config": "^8.7.1",
+    "@cowtech/eslint-config": "^8.7.2",
     "@swc/cli": "^0.1.57",
-    "@swc/core": "^1.2.244",
-    "@types/node": "^18.7.13",
+    "@swc/core": "^1.2.245",
+    "@types/node": "^18.7.14",
     "@types/tap": "^15.0.7",
     "c8": "^7.12.0",
     "chokidar": "^3.5.3",
