@@ -39,7 +39,7 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "swc -s -w -d dist src",
+    "dev": "swc --delete-dir-on-start -s -w -d dist src",
     "prebuild": "rm -rf dist && npm run lint",
     "build": "swc -d dist src",
     "postbuild": "tsc -p . --emitDeclarationOnly",
