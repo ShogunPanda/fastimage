@@ -6,7 +6,6 @@
     "jsx": "preserve",
     "declaration": true,
     "outDir": "dist",
-    "declarationDir": "types",
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
