@@ -1,3 +1,9 @@
+### 2022-11-23 / 4.0.12
+
+- chore: Updated dependencies.
+- chore: Update package.json
+- fix: Fixed build script.
+
 ### 2022-10-12 / 4.0.11
 
 - fix: Updated types layout.
