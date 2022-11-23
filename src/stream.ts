@@ -45,7 +45,7 @@ export class FastImageStream extends Writable {
   }
 
   /* c8 ignore start  */
-  _writev(chunks: Array<{ chunk: any }>, cb: (error?: Error | null) => void): void {
+  _writev(chunks: { chunk: any }[], cb: (error?: Error | null) => void): void {
     for (const { chunk } of chunks) {
       this.analyze(chunk)
     }

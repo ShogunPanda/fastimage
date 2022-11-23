@@ -92,7 +92,7 @@ t.test('fastimage.info', t => {
     })
 
     t.test('should send the right user agent', async t => {
-      const agents: Array<string> = []
+      const agents: string[] = []
 
       const server = createHttpServer((r, s) => {
         agents.push(r.headers['user-agent']!)
