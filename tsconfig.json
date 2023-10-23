@@ -17,5 +17,7 @@
     "strictNullChecks": true,
     "useUnknownInCatchVariables": false
   },
-  "include": ["src/*.ts"]
+  "include": [
+    "src/*.ts"
+  ]
 }

@@ -1,8 +1,8 @@
 import EventEmitter from 'node:events'
-import { Stream, Writable, WritableOptions } from 'node:stream'
-import { Callback, ensurePromiseCallback } from './callback.js'
+import { type Stream, type Writable, type WritableOptions } from 'node:stream'
+import { type Callback, ensurePromiseCallback } from './callback.js'
 import { handleData, handleError, toStream } from './internals.js'
-import { defaultOptions, FastImageError, ImageInfo, Options } from './models.js'
+import { defaultOptions, FastImageError, type ImageInfo, type Options } from './models.js'
 import { FastImageStream } from './stream.js'
 
 export { defaultOptions, FastImageError } from './models.js'

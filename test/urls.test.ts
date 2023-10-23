@@ -2,7 +2,7 @@
 
 import { readFileSync } from 'node:fs'
 import { createServer as createHttpServer } from 'node:http'
-import { AddressInfo, createServer } from 'node:net'
+import { type AddressInfo, createServer } from 'node:net'
 import t from 'tap'
 import { info } from '../src/index.js'
 import { FastImageError, userAgentVersion } from '../src/models.js'

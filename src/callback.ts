@@ -1,4 +1,4 @@
-import { ImageInfo } from './models.js'
+import { type ImageInfo } from './models.js'
 
 export type Callback = (error: Error | null, info?: ImageInfo) => void
 type PromiseResolver<T> = (value: T) => void
@@ -19,10 +19,11 @@ export function ensurePromiseCallback(callback?: Callback): [Callback, Promise<I
   return [
     (err, info) => {
       if (err) {
-        return promiseReject(err)
+        promiseReject(err)
+        return
       }
 
-      return promiseResolve(info!)
+      promiseResolve(info!)
     },
     promise
   ]

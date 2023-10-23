@@ -1,11 +1,11 @@
 import imageSize from 'image-size'
-import EventEmitter from 'node:events'
+import type EventEmitter from 'node:events'
 import { createReadStream } from 'node:fs'
-import { IncomingHttpHeaders } from 'node:http'
-import { Readable, Stream } from 'node:stream'
+import { type IncomingHttpHeaders } from 'node:http'
+import { Readable, type Stream } from 'node:stream'
 import undici from 'undici'
-import { Callback } from './callback.js'
-import { FastImageError, ImageInfo } from './models.js'
+import { type Callback } from './callback.js'
+import { FastImageError, type ImageInfo } from './models.js'
 
 const realUrlHeader = 'x-fastimage-real-url'
 

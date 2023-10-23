@@ -21,7 +21,7 @@ jobs:
         with:
           version: latest
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --shamefully-hoist
       - name: Run Tests
         run: pnpm run ci
       - name: Upload coverage to Codecov
