@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
+    "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "node",
     "jsx": "preserve",
@@ -17,7 +17,5 @@
     "strictNullChecks": true,
     "useUnknownInCatchVariables": false
   },
-  "include": [
-    "src/*.ts"
-  ]
+  "include": ["src/*.ts"]
 }
