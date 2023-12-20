@@ -1,7 +1,7 @@
 import EventEmitter from 'node:events'
 import { Writable, type WritableOptions } from 'node:stream'
 import { handleData } from './internals.js'
-import { defaultOptions, FastImageError, type Options } from './models.js'
+import { FastImageError, defaultOptions, type Options } from './models.js'
 
 export class FastImageStream extends Writable {
   buffer: Buffer
@@ -39,13 +39,13 @@ export class FastImageStream extends Writable {
     )
   }
 
-  _write(chunk: any, _e: BufferEncoding, cb: (error?: Error | null) => void): void {
+  _write(chunk: Buffer, _e: BufferEncoding, cb: (error?: Error | null) => void): void {
     this.analyze(chunk)
     cb()
   }
 
   /* c8 ignore start  */
-  _writev(chunks: { chunk: any }[], cb: (error?: Error | null) => void): void {
+  _writev(chunks: { chunk: Buffer }[], cb: (error?: Error | null) => void): void {
     for (const { chunk } of chunks) {
       this.analyze(chunk)
     }

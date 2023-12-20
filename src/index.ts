@@ -1,11 +1,11 @@
 import EventEmitter from 'node:events'
 import { type Stream, type Writable, type WritableOptions } from 'node:stream'
-import { type Callback, ensurePromiseCallback } from './callback.js'
+import { ensurePromiseCallback, type Callback } from './callback.js'
 import { handleData, handleError, toStream } from './internals.js'
-import { defaultOptions, FastImageError, type ImageInfo, type Options } from './models.js'
+import { FastImageError, defaultOptions, type ImageInfo, type Options } from './models.js'
 import { FastImageStream } from './stream.js'
 
-export { defaultOptions, FastImageError } from './models.js'
+export { FastImageError, defaultOptions } from './models.js'
 
 export async function info(
   source: string | Stream | Buffer,
@@ -40,7 +40,7 @@ export async function info(
       finished = handleData(buffer, headers, threshold, start, aborter, callback)
     })
 
-    stream.on('error', error => {
+    stream.on('error', (error: FastImageError) => {
       callback(handleError(error, url!))
     })
 
@@ -55,7 +55,8 @@ export async function info(
 
     return promise!
   } catch (error) {
-    callback(error)
+    // eslint-disable-next-line n/no-callback-literal
+    callback(error as Error)
     return promise!
   }
 }

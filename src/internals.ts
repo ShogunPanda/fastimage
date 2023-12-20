@@ -62,7 +62,7 @@ export async function toStream(
       if ((error as FastImageError).code === 'FASTIMAGE_URL_ERROR') {
         throw error
       } else if (url) {
-        throw handleError(error, url)
+        throw handleError(error as FastImageError, url)
       }
 
       // Parsing failed. Treat as local file
