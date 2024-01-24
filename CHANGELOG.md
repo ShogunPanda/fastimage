@@ -1,3 +1,7 @@
+### 2024-01-24 / 5.0.1
+
+- chore: Updated TypeScript configuration.
+
 ### 2023-12-20 / 5.0.0
 
 - chore: Updated dependencies.
