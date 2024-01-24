@@ -1,4 +1,4 @@
-import imageSize from 'image-size'
+import { imageSize } from 'image-size'
 import type EventEmitter from 'node:events'
 import { createReadStream } from 'node:fs'
 import { type IncomingHttpHeaders } from 'node:http'
