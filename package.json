@@ -41,8 +41,8 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "swc --delete-dir-on-start -s -w -d dist src",
-    "build": "swc --delete-dir-on-start -d dist src",
+    "dev": "swc --strip-leading-paths --delete-dir-on-start -s -w -d dist src",
+    "build": "swc --strip-leading-paths --delete-dir-on-start -d dist src",
     "postbuild": "concurrently npm:lint npm:typecheck",
     "format": "prettier -w src test",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx src test",
