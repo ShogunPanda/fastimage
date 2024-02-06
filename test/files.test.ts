@@ -1,72 +1,66 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { chmodSync, unlinkSync, writeFileSync } from 'node:fs'
+import { deepStrictEqual, ifError } from 'node:assert'
+import { chmodSync, existsSync, unlinkSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'
-import t from 'tap'
+import { test } from 'node:test'
 import { info } from '../src/index.js'
 import { FastImageError } from '../src/models.js'
 
 const fileName = import.meta.url.replace('file://', '')
 const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')
 
-t.test('fastimage.info', t => {
-  t.test('when working with local files', t => {
-    t.test('should return the information of a image', t => {
+test('fastimage.info', async () => {
+  await test('when working with local files', async () => {
+    await test('should return the information of a image', () => {
       info(imagePath, (error, data) => {
-        t.error(error)
+        ifError(error)
 
-        t.same(data, {
+        deepStrictEqual(data, {
           width: 150,
           height: 150,
           type: 'png',
           time: data!.time,
           analyzed: 409
         })
-
-        t.end()
       })
     })
 
-    t.test('should return a error when the path is a directory', t => {
+    await test('should return a error when the path is a directory', () => {
       info(dirname(fileName), (error, data) => {
-        t.error(data)
-        t.strictSame(error, new FastImageError('Source is a directory.', 'FS_ERROR'))
-        t.end()
+        ifError(data)
+        deepStrictEqual(error, new FastImageError('Source is a directory.', 'FS_ERROR'))
       })
     })
 
-    t.test('should return a error when the path cannot be found', t => {
+    await test('should return a error when the path cannot be found', () => {
       info('/not/existent', (error, data) => {
-        t.error(data)
-        t.strictSame(error, new FastImageError('Source not found.', 'FS_ERROR'))
-        t.end()
+        ifError(data)
+        deepStrictEqual(error, new FastImageError('Source not found.', 'FS_ERROR'))
       })
     })
 
-    t.test('should return a error when the path cannot be read', t => {
+    await test('should return a error when the path cannot be read', () => {
       const unreadablePath = imagePath.replace('image.png', 'unreadable.png')
-      writeFileSync(unreadablePath, 'foo', 'utf8')
-      chmodSync(unreadablePath, 0)
+
+      if (!existsSync(unreadablePath)) {
+        writeFileSync(unreadablePath, 'foo', 'utf8')
+        chmodSync(unreadablePath, 0)
+      }
 
       info(unreadablePath, (error, data) => {
-        t.error(data)
-        t.strictSame(error, new FastImageError('Source is not readable.', 'FS_ERROR'))
-        t.end()
+        ifError(data)
+        deepStrictEqual(error, new FastImageError('Source is not readable.', 'FS_ERROR'))
 
         unlinkSync(unreadablePath)
       })
     })
 
-    t.test('should return a error when the path is not a image', t => {
+    await test('should return a error when the path is not a image', () => {
       info(fileName, (error, data) => {
-        t.error(data)
-        t.strictSame(error, new FastImageError('Unsupported data.', 'UNSUPPORTED'))
-        t.end()
+        ifError(data)
+        deepStrictEqual(error, new FastImageError('Unsupported data.', 'UNSUPPORTED'))
       })
     })
-
-    t.end()
   })
-
-  t.end()
 })

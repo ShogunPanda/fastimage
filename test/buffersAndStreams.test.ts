@@ -1,21 +1,22 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
+import { deepStrictEqual, rejects } from 'node:assert'
 import { createReadStream, readFileSync } from 'node:fs'
-import t from 'tap'
+import { test } from 'node:test'
 import { info } from '../src/index.js'
 import { FastImageError } from '../src/models.js'
 
 const fileName = import.meta.url.replace('file://', '')
 const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')
 
-t.test('fastimage.info', t => {
-  t.test('when working with buffers', t => {
-    t.test('should return the information of a image', async t => {
+test('fastimage.info', async () => {
+  await test('when working with buffers', async () => {
+    await test('should return the information of a image', async () => {
       const buffer = readFileSync(imagePath)
 
       const data = await info(buffer)
 
-      t.same(data, {
+      deepStrictEqual(data, {
         width: 150,
         height: 150,
         type: 'png',
@@ -24,20 +25,18 @@ t.test('fastimage.info', t => {
       })
     })
 
-    t.test('should return a error when the data is not a image', async t => {
+    await test('should return a error when the data is not a image', async () => {
       const buffer = readFileSync(fileName)
 
-      await t.rejects(info(buffer), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
+      await rejects(info(buffer), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
     })
-
-    t.end()
   })
 
-  t.test('when working with streams', t => {
-    t.test('should return the information of a image', async t => {
+  await test('when working with streams', async () => {
+    await test('should return the information of a image', async () => {
       const data = await info(createReadStream(imagePath))
 
-      t.same(data, {
+      deepStrictEqual(data, {
         width: 150,
         height: 150,
         type: 'png',
@@ -46,12 +45,8 @@ t.test('fastimage.info', t => {
       })
     })
 
-    t.test('should return a error when the data is not a image', async t => {
-      await t.rejects(info(fileName), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
+    await test('should return a error when the data is not a image', async () => {
+      await rejects(info(fileName), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
     })
-
-    t.end()
   })
-
-  t.end()
 })

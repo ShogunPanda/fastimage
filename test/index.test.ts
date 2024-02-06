@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import t from 'tap'
+import { deepStrictEqual, ok, rejects } from 'node:assert'
+import { test } from 'node:test'
 import { info } from '../src/index.js'
 import { FastImageError } from '../src/models.js'
 
-t.test('fastimage.info', t => {
-  t.test('side cases', async t => {
+test('fastimage.info', async () => {
+  await test('side cases', async () => {
     // This is a file which is corrupted. To correctly recognize the threshold must be disabled.
-    await t.rejects(
+    await rejects(
       info(
         'https://upload.wikimedia.org/wikipedia/commons/b/b2/%27Journey_to_the_Center_of_the_Earth%27_by_%C3%89douard_Riou_38.jpg'
       ),
@@ -19,7 +20,7 @@ t.test('fastimage.info', t => {
       { threshold: 0 }
     )
 
-    t.same(data, {
+    deepStrictEqual(data, {
       width: 980,
       height: 1448,
       type: 'jpg',
@@ -30,8 +31,6 @@ t.test('fastimage.info', t => {
       size: 554_617
     })
 
-    t.ok(data.analyzed < data.size!)
+    ok(data.analyzed < data.size)
   })
-
-  t.end()
 })

@@ -1,7 +1,0 @@
----
-jobs: 5
-timeout: 60
-disable-coverage: true
-allow-empty-coverage: true
-node-arg:
-  - --loader=ts-node/esm

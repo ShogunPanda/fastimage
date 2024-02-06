@@ -47,8 +47,8 @@
     "format": "prettier -w src test",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx src test",
     "typecheck": "tsc -p . --emitDeclarationOnly",
-    "test": "c8 -c test/config/c8-local.json tap test/*.test.ts",
-    "test:ci": "c8 -c test/config/c8-ci.json tap --no-color test/*.test.ts",
+    "test": "c8 -c test/config/c8-local.json node --import tsx --test test/*.test.ts",
+    "test:ci": "c8 -c test/config/c8-ci.json node --import tsx --test-reporter=tap --test test/*.test.ts",
     "ci": "npm run build && npm run test:ci",
     "prepublishOnly": "npm run ci",
     "postpublish": "git push origin && git push origin -f --tags"
@@ -67,14 +67,10 @@
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.2",
     "prettier": "^3.2.4",
-    "tap": "^18.7.0",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">= 18.18.0"
-  },
-  "tap": {
-    "extends": "./test/config/tap.yml"
   }
 }

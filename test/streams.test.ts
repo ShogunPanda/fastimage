@@ -1,55 +1,48 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
+import { deepStrictEqual } from 'node:assert'
 import { createReadStream } from 'node:fs'
-import t from 'tap'
+import { test } from 'node:test'
 import { stream } from '../src/index.js'
 import { FastImageError } from '../src/models.js'
 
 const fileName = import.meta.url.replace('file://', '')
 const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')
 
-t.test('fastimage.stream', t => {
-  t.test('should emit info event when info are ready', t => {
+test('fastimage.stream', async () => {
+  await test('should emit info event when info are ready', () => {
     const input = createReadStream(imagePath, { highWaterMark: 200 })
 
     const pipe = input.pipe(stream())
 
     pipe.on('info', data => {
-      t.same(data, {
+      deepStrictEqual(data, {
         width: 150,
         height: 150,
         type: 'png',
         time: data.time,
         analyzed: 200
       })
-
-      t.end()
     })
   })
 
-  t.test('should emit error event in case of errors', t => {
+  await test('should emit error event in case of errors', () => {
     const input = createReadStream(fileName)
 
     const pipe = input.pipe(stream())
 
     pipe.on('error', error => {
-      t.strictSame(error, new FastImageError('Unsupported data.', 'UNSUPPORTED'))
-
-      t.end()
+      deepStrictEqual(error, new FastImageError('Unsupported data.', 'UNSUPPORTED'))
     })
   })
 
-  t.test('should accept the threshold option', t => {
+  await test('should accept the threshold option', () => {
     const input = createReadStream(imagePath, { highWaterMark: 1 })
 
     const pipe = input.pipe(stream({ threshold: 10 }))
 
     pipe.on('error', error => {
-      t.strictSame(error, new FastImageError('Unsupported data.', 'UNSUPPORTED'))
-
-      t.end()
+      deepStrictEqual(error, new FastImageError('Unsupported data.', 'UNSUPPORTED'))
     })
   })
-
-  t.end()
 })
