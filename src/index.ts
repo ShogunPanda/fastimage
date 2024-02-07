@@ -55,7 +55,6 @@ export async function info(
 
     return promise!
   } catch (error) {
-    // eslint-disable-next-line n/no-callback-literal
     callback(error as Error)
     return promise!
   }
