@@ -1,3 +1,8 @@
+### 2024-04-12 / 5.0.5
+
+- chore: Updated dependencies.
+- chore: Added missing dependency.
+
 ### 2024-02-07 / 5.0.4
 
 - chore: Updated dependencies.
