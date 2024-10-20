@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
 import { deepStrictEqual, ifError } from 'node:assert'
 import { chmodSync, existsSync, unlinkSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'

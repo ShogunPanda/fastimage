@@ -1,6 +1,6 @@
 {
   "jsc": {
-    "target": "es2022",
+    "target": "esnext",
     "parser": {
       "syntax": "typescript",
       "tsx": false,

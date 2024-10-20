@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
 import { deepStrictEqual } from 'node:assert'
 import { createReadStream } from 'node:fs'
 import { test } from 'node:test'

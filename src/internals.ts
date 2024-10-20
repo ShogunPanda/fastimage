@@ -148,7 +148,7 @@ export function handleError(error: FastImageError, url: string): Error {
     case 'ECONNREFUSED':
       message = 'Connection refused from the remote host.'
       break
-    /* c8 ignore next */
+    /* c8 ignore next 2 */
     case 'ETIMEDOUT':
     case 'UND_ERR_HEADERS_TIMEOUT':
       message = 'Connection to the remote host timed out.'

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
 import { deepStrictEqual, ok, rejects } from 'node:assert'
 import { readFileSync } from 'node:fs'
 import { createServer as createHttpServer } from 'node:http'
@@ -52,10 +50,18 @@ test('fastimage.info', async () => {
     })
 
     await test('should handle connection timeouts', async () => {
+      const server = createServer(c => {})
+
+      server.listen({ port: 0 })
+
+      const url = `http://127.0.0.1:${(server.address() as AddressInfo).port}`
+
       await rejects(
-        info('https://fakeimg.pl/1000x1000/', { timeout: 10 }),
-        new FastImageError('Connection to the remote host timed out.', 'NETWORK_ERROR', 'https://fakeimg.pl/1000x1000/')
+        info(url, { timeout: 10 }),
+        new FastImageError('Connection to the remote host timed out.', 'NETWORK_ERROR', url)
       )
+
+      server.close()
     })
 
     await test('should handle connection failures', async () => {

@@ -39,12 +39,12 @@ export class FastImageStream extends Writable {
     )
   }
 
+  /* c8 ignore start  */
   _write(chunk: Buffer, _e: BufferEncoding, cb: (error?: Error | null) => void): void {
     this.analyze(chunk)
     cb()
   }
 
-  /* c8 ignore start  */
   _writev(chunks: { chunk: Buffer }[], cb: (error?: Error | null) => void): void {
     for (const { chunk } of chunks) {
       this.analyze(chunk)

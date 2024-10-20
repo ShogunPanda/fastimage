@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
 import { deepStrictEqual, ok, rejects } from 'node:assert'
 import { test } from 'node:test'
 import { info } from '../src/index.js'
