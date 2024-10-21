@@ -10,7 +10,7 @@ jobs:
       - name: Use supported Node.js Version
         uses: actions/setup-node@v3
         with:
-          node-version: 20.18.0*
+          node-version: 20.18.0
       - name: Restore cached dependencies
         uses: actions/cache@v3
         with:
