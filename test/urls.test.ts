@@ -11,17 +11,24 @@ test('fastimage.info', async () => {
     await test('should return the information of a image', async () => {
       const data = await info('http://fakeimg.pl/1000x1000/')
 
+      // This is to let the test pass if the server returns no Content-Length hader
+      const size = data.size
+      data.size = undefined
+
       deepStrictEqual(data, {
         width: 1000,
         height: 1000,
         type: 'png',
         time: data.time,
+        size: undefined,
         analyzed: data.analyzed,
-        realUrl: 'https://fakeimg.pl/1000x1000/',
-        size: 17_308
+        realUrl: 'https://fakeimg.pl/1000x1000/'
       })
 
-      ok(data.analyzed < data.size)
+      if (size) {
+        deepStrictEqual(size, 17_308)
+        ok(data.analyzed < size)
+      }
     })
 
     await test('should return a error when the host cannot be found', async () => {

@@ -46,9 +46,8 @@ export async function toStream(
         dispatcher: new undici.Agent({
           headersTimeout: timeout,
           bodyTimeout: timeout,
-          maxRedirections: 10,
           pipelining: 0
-        })
+        }).compose(undici.interceptors.redirect({ maxRedirections: 10 }))
       })
 
       if (statusCode > 299) {
