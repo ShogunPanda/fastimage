@@ -1,13 +1,12 @@
 import { deepStrictEqual, rejects } from 'node:assert'
 import { createReadStream, readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { test } from 'node:test'
-import { info } from '../src/index.js'
-import { FastImageError } from '../src/models.js'
-
-const fileName = import.meta.url.replace('file://', '')
-const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')
+import { FastImageError, info } from '../src/index.ts'
 
 test('fastimage.info', async () => {
+  const imagePath = resolve(import.meta.dirname, 'fixtures/image.png')
+
   await test('when working with buffers', async () => {
     await test('should return the information of a image', async () => {
       const buffer = readFileSync(imagePath)
@@ -24,7 +23,7 @@ test('fastimage.info', async () => {
     })
 
     await test('should return a error when the data is not a image', async () => {
-      const buffer = readFileSync(fileName)
+      const buffer = readFileSync(import.meta.filename)
 
       await rejects(info(buffer), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
     })
@@ -44,7 +43,10 @@ test('fastimage.info', async () => {
     })
 
     await test('should return a error when the data is not a image', async () => {
-      await rejects(info(fileName), new FastImageError('Unsupported data.', 'UNSUPPORTED'))
+      await rejects(
+        info(createReadStream(import.meta.filename)),
+        new FastImageError('Unsupported data.', 'UNSUPPORTED')
+      )
     })
   })
 })

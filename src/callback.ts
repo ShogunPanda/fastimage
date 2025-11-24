@@ -1,4 +1,4 @@
-import { type ImageInfo } from './models.js'
+import { type ImageInfo } from './models.ts'
 
 export type Callback = (error: Error | null, info?: ImageInfo) => void
 type PromiseResolver<T> = (value: T) => void

@@ -4,8 +4,8 @@ import { createReadStream } from 'node:fs'
 import { type IncomingHttpHeaders } from 'node:http'
 import { Readable, type Stream } from 'node:stream'
 import undici from 'undici'
-import { type Callback } from './callback.js'
-import { FastImageError, type ImageInfo } from './models.js'
+import { type Callback } from './callback.ts'
+import { FastImageError, type ImageInfo } from './models.ts'
 
 const realUrlHeader = 'x-fastimage-real-url'
 
@@ -28,7 +28,10 @@ export async function toStream(
     try {
       const parsedUrl = new URL(source)
 
-      if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
+      /* c8 ignore next 3 - Windows paths */
+      if (parsedUrl.protocol.length === 2) {
+        return [createReadStream(source as string, { highWaterMark }), undefined, undefined]
+      } else if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
         throw new FastImageError('Invalid URL.', 'URL_ERROR', parsedUrl.toString())
       }
 

@@ -2,14 +2,16 @@ import { deepStrictEqual, ok, rejects } from 'node:assert'
 import { readFileSync } from 'node:fs'
 import { createServer as createHttpServer } from 'node:http'
 import { createServer, type AddressInfo } from 'node:net'
+import { resolve } from 'node:path'
 import { test } from 'node:test'
-import { info } from '../src/index.js'
-import { FastImageError, userAgentVersion } from '../src/models.js'
+import { FastImageError, info, userAgentVersion } from '../src/index.ts'
 
 test('fastimage.info', async () => {
+  const imagePath = resolve(import.meta.dirname, 'fixtures/image.png')
+
   await test('when working with URLS', async () => {
     await test('should return the information of a image', async () => {
-      const data = await info('http://fakeimg.pl/1000x1000/')
+      const data = await info('https://placehold.co/1000x1000')
 
       // This is to let the test pass if the server returns no Content-Length hader
       const size = data.size
@@ -18,30 +20,30 @@ test('fastimage.info', async () => {
       deepStrictEqual(data, {
         width: 1000,
         height: 1000,
-        type: 'png',
+        type: 'svg',
         time: data.time,
         size: undefined,
         analyzed: data.analyzed,
-        realUrl: 'https://fakeimg.pl/1000x1000/'
+        realUrl: 'https://placehold.co/1000x1000'
       })
 
       if (size) {
-        deepStrictEqual(size, 17_308)
+        deepStrictEqual(size, 3928)
         ok(data.analyzed < size)
       }
     })
 
     await test('should return a error when the host cannot be found', async () => {
       await rejects(
-        info('https://fakeimg-no.pl/1000x1000/'),
-        new FastImageError('Invalid remote host requested.', 'NETWORK_ERROR', 'https://fakeimg-no.pl/1000x1000/')
+        info('https://placehold.invalid.co/1000x1000'),
+        new FastImageError('Invalid remote host requested.', 'NETWORK_ERROR', 'https://placehold.invalid.co/1000x1000')
       )
     })
 
     await test('should return a error when the URL cannot be found', async () => {
       await rejects(
-        info('https://fakeimg.pl/invalid'),
-        new FastImageError('Remote host replied with HTTP 404.', 'NETWORK_ERROR', 'https://fakeimg.pl/invalid')
+        info('https://placehold.co/invalid'),
+        new FastImageError('Remote host replied with HTTP 404.', 'NETWORK_ERROR', 'https://placehold.co/invalid')
       )
     })
 
@@ -107,7 +109,7 @@ test('fastimage.info', async () => {
 
       const server = createHttpServer((r, s) => {
         agents.push(r.headers['user-agent']!)
-        s.end(readFileSync(new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')))
+        s.end(readFileSync(imagePath))
       })
 
       server.listen({ port: 0 })

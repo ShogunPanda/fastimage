@@ -1,11 +1,11 @@
 import EventEmitter from 'node:events'
 import { type Stream, type Writable, type WritableOptions } from 'node:stream'
-import { ensurePromiseCallback, type Callback } from './callback.js'
-import { handleData, handleError, toStream } from './internals.js'
-import { FastImageError, defaultOptions, type ImageInfo, type Options } from './models.js'
-import { FastImageStream } from './stream.js'
+import { ensurePromiseCallback, type Callback } from './callback.ts'
+import { handleData, handleError, toStream } from './internals.ts'
+import { FastImageError, defaultOptions, type ImageInfo, type Options } from './models.ts'
+import { FastImageStream } from './stream.ts'
 
-export { FastImageError, defaultOptions } from './models.js'
+export { FastImageError, defaultOptions, userAgentVersion } from './models.ts'
 
 export async function info(
   source: string | Stream | Buffer,

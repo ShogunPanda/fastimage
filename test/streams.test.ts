@@ -1,13 +1,12 @@
 import { deepStrictEqual } from 'node:assert'
 import { createReadStream } from 'node:fs'
+import { resolve } from 'node:path'
 import { test } from 'node:test'
-import { stream } from '../src/index.js'
-import { FastImageError } from '../src/models.js'
-
-const fileName = import.meta.url.replace('file://', '')
-const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')
+import { FastImageError, stream } from '../src/index.ts'
 
 test('fastimage.stream', async () => {
+  const imagePath = resolve(import.meta.dirname, 'fixtures/image.png')
+
   await test('should emit info event when info are ready', () => {
     const input = createReadStream(imagePath, { highWaterMark: 200 })
 
@@ -25,7 +24,7 @@ test('fastimage.stream', async () => {
   })
 
   await test('should emit error event in case of errors', () => {
-    const input = createReadStream(fileName)
+    const input = createReadStream(import.meta.filename)
 
     const pipe = input.pipe(stream())
 

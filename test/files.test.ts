@@ -1,14 +1,12 @@
 import { deepStrictEqual, ifError } from 'node:assert'
 import { chmodSync, existsSync, unlinkSync, writeFileSync } from 'node:fs'
-import { dirname } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import { test } from 'node:test'
-import { info } from '../src/index.js'
-import { FastImageError } from '../src/models.js'
-
-const fileName = import.meta.url.replace('file://', '')
-const imagePath = new URL('fixtures/image.png', import.meta.url).toString().replace('file://', '')
+import { FastImageError, info } from '../src/index.ts'
 
 test('fastimage.info', async () => {
+  const imagePath = resolve(import.meta.dirname, 'fixtures/image.png')
+
   await test('when working with local files', async () => {
     await test('should return the information of a image', () => {
       info(imagePath, (error, data) => {
@@ -25,7 +23,7 @@ test('fastimage.info', async () => {
     })
 
     await test('should return a error when the path is a directory', () => {
-      info(dirname(fileName), (error, data) => {
+      info(dirname(import.meta.filename), (error, data) => {
         ifError(data)
         deepStrictEqual(error, new FastImageError('Source is a directory.', 'FS_ERROR'))
       })
@@ -38,7 +36,7 @@ test('fastimage.info', async () => {
       })
     })
 
-    await test('should return a error when the path cannot be read', () => {
+    await test('should return a error when the path cannot be read', { skip: process.platform === 'win32' }, () => {
       const unreadablePath = imagePath.replace('image.png', 'unreadable.png')
 
       if (!existsSync(unreadablePath)) {
@@ -55,7 +53,7 @@ test('fastimage.info', async () => {
     })
 
     await test('should return a error when the path is not a image', () => {
-      info(fileName, (error, data) => {
+      info(import.meta.filename, (error, data) => {
         ifError(data)
         deepStrictEqual(error, new FastImageError('Unsupported data.', 'UNSUPPORTED'))
       })

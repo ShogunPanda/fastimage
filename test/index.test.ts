@@ -1,7 +1,6 @@
 import { rejects } from 'node:assert'
 import { test } from 'node:test'
-import { info } from '../src/index.js'
-import { FastImageError } from '../src/models.js'
+import { FastImageError, info } from '../src/index.ts'
 
 test('fastimage.info', async () => {
   await test('side cases', async () => {
