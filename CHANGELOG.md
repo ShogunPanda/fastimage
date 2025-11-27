@@ -1,3 +1,7 @@
+### 2025-11-27 / 7.0.1
+
+- fix: Correctly sort type only imports.
+
 ### 2025-11-24 / 7.0.0
 
 
