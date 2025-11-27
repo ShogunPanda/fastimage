@@ -1,8 +1,10 @@
+import type { Stream, Writable, WritableOptions } from 'node:stream'
+import type { Callback } from './callback.ts'
+import type { ImageInfo, Options } from './models.ts'
 import EventEmitter from 'node:events'
-import { type Stream, type Writable, type WritableOptions } from 'node:stream'
-import { ensurePromiseCallback, type Callback } from './callback.ts'
+import { ensurePromiseCallback } from './callback.ts'
 import { handleData, handleError, toStream } from './internals.ts'
-import { FastImageError, defaultOptions, type ImageInfo, type Options } from './models.ts'
+import { FastImageError, defaultOptions } from './models.ts'
 import { FastImageStream } from './stream.ts'
 
 export { FastImageError, defaultOptions, userAgentVersion } from './models.ts'
