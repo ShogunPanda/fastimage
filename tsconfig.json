@@ -1,6 +1,7 @@
 {
   "extends": "@cowtech/typescript-config",
   "compilerOptions": {
+    "types": ["node"],
     "outDir": "./dist",
     "rootDir": "./src",
     "declaration": true
